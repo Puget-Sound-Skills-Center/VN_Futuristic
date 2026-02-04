@@ -117,6 +117,25 @@ public class Scene01Events : MonoBehaviour
         nextButton.SetActive(false);
         charHaruka.SetActive(true);
         textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Kasumi";
+        textToSpeak = "That's a great idea. Let's go!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 5;
+    }
+
+    IEnumerator EventFive()
+    {
+        // event 4
+        nextButton.SetActive(false);
+        charHaruka.SetActive(true);
+        textBox.SetActive(true);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
         eventPos = 4;
@@ -140,6 +159,10 @@ public class Scene01Events : MonoBehaviour
         if (eventPos == 4)
         {
             StartCoroutine(EventFour());
+        }
+        if (eventPos == 5)
+        {
+            StartCoroutine(EventFive());
         }
     }
 
