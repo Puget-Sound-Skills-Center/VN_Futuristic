@@ -7,7 +7,9 @@ public class Scene01Events : MonoBehaviour
 {
     public GameObject fadeScreenIn;
     public GameObject charKasumi;
+    public GameObject charKasumiDefault;
     public GameObject charHaruka;
+    public GameObject charHarukaSheepish;
     public GameObject textBox;
     [SerializeField] AudioSource girlSigh;
     [SerializeField] AudioSource girlGasp;
@@ -96,7 +98,10 @@ public class Scene01Events : MonoBehaviour
     {
         // event 3
         nextButton.SetActive(false);
-        charHaruka.SetActive(true);
+        charHaruka.SetActive(false);
+        charKasumi.SetActive(false);
+        charHarukaSheepish.SetActive(true);
+        charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Haruka";
         textToSpeak = "I'm sorry I didn't mean to... Let's go to the park and look for Akane";
@@ -115,7 +120,10 @@ public class Scene01Events : MonoBehaviour
     {
         // event 4
         nextButton.SetActive(false);
-        charHaruka.SetActive(true);
+        charKasumi.SetActive(false);
+        charHaruka.SetActive(false);
+        charHarukaSheepish.SetActive(true);
+        charKasumiDefault.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Kasumi";
         textToSpeak = "That's a great idea. Let's go!";
@@ -134,7 +142,7 @@ public class Scene01Events : MonoBehaviour
     {
         // event 4
         nextButton.SetActive(false);
-        charHaruka.SetActive(true);
+        charHaruka.SetActive(false);
         textBox.SetActive(true);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
