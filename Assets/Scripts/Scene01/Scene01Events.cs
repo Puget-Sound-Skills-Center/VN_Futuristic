@@ -37,7 +37,6 @@ public class Scene01Events : MonoBehaviour
         // event 0
         yield return new WaitForSeconds(2);
         fadeScreenIn.SetActive(false);
-        charKasumi.SetActive(true);
         yield return new WaitForSeconds(2);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
@@ -45,7 +44,6 @@ public class Scene01Events : MonoBehaviour
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
-        girlSigh.Play();
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
@@ -152,6 +150,7 @@ public class Scene01Events : MonoBehaviour
 
     public void NextButton()
     {
+
         if (eventPos == 1)
         {
             StartCoroutine(EventOne());
