@@ -36,7 +36,7 @@ public class Scene01Events : MonoBehaviour
     {
         // event 0
         yield return new WaitForSeconds(2);
-        fadeScreenIn.SetActive(false);
+        fadeScreenIn.SetActive(true);
         yield return new WaitForSeconds(2);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
@@ -57,7 +57,7 @@ public class Scene01Events : MonoBehaviour
     {
         // event 1
         nextButton.SetActive(false);
-        charHaruka.SetActive(true);
+        charHaruka.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Haruka";
         textToSpeak = "I was hiding over in the corner.";
@@ -77,9 +77,9 @@ public class Scene01Events : MonoBehaviour
     {
         // event 2
         nextButton.SetActive(false);
-        charHaruka.SetActive(true);
+        charHaruka.SetActive(false);
         textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Kasumi";
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
         textToSpeak = "Oh, you startled me. I didn't expect you there.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
@@ -98,10 +98,10 @@ public class Scene01Events : MonoBehaviour
         nextButton.SetActive(false);
         charHaruka.SetActive(false);
         charKasumi.SetActive(false);
-        charHarukaSheepish.SetActive(true);
+        charHarukaSheepish.SetActive(false);
         charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Haruka";
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
         textToSpeak = "I'm sorry I didn't mean to... Let's go to the park and look for Akane";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
@@ -120,10 +120,10 @@ public class Scene01Events : MonoBehaviour
         nextButton.SetActive(false);
         charKasumi.SetActive(false);
         charHaruka.SetActive(false);
-        charHarukaSheepish.SetActive(true);
-        charKasumiDefault.SetActive(true);
+        charHarukaSheepish.SetActive(false);
+        charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Kasumi";
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
         textToSpeak = "That's a great idea. Let's go!";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
@@ -150,6 +150,10 @@ public class Scene01Events : MonoBehaviour
 
     public void NextButton()
     {
+        if (eventPos == 0)
+        {
+            StartCoroutine(EventStarter());
+        }
 
         if (eventPos == 1)
         {
