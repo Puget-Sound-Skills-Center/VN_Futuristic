@@ -214,6 +214,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -487,7 +488,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bf5279c650666f544abb6f9df8f0c7e8, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: bf5279c650666f544abb6f9df8f0c7e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -660,6 +661,7 @@ GameObject:
   - component: {fileID: 427393541}
   - component: {fileID: 427393543}
   - component: {fileID: 427393542}
+  - component: {fileID: 427393544}
   m_Layer: 5
   m_Name: ClassroomBack
   m_TagString: Untagged
@@ -683,7 +685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.8756, y: -94.393}
+  m_AnchoredPosition: {x: 83.066, y: -94.393}
   m_SizeDelta: {x: 2263.2476, y: 1226.1436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427393542
@@ -721,6 +723,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427393540}
   m_CullTransparentMesh: 1
+--- !u!95 &427393544
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427393540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab73e2fd65e860b4eba39d147ac8d9fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1379,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 178d5346a507b134bb19e467757af1b8, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 178d5346a507b134bb19e467757af1b8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.152
@@ -1537,6 +1561,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1685,8 +1710,8 @@ MonoBehaviour:
   charHaruka: {fileID: 194535034}
   charHarukaSheepish: {fileID: 675281380}
   textBox: {fileID: 1878115938}
-  girlSigh: {fileID: 306363266}
-  girlGasp: {fileID: 1568341812}
+  girlSigh: {fileID: 0}
+  girlGasp: {fileID: 0}
   textToSpeak: 
   currentTextLength: 0
   textLength: 0
@@ -1752,7 +1777,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6392b94d612d4c8448c9204a3490f7f7, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6392b94d612d4c8448c9204a3490f7f7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2219,6 +2244,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

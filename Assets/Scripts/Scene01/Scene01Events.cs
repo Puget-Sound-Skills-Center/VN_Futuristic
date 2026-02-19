@@ -40,7 +40,8 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitForSeconds(2);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
-        textToSpeak = "I wonder where Haruka has got to. She was supposed to be here.";
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
+        textToSpeak = "Outlaw Haven... Not a very welcoming place.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -50,7 +51,6 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
         eventPos = 1;
-
     }
 
     IEnumerator EventOne()
@@ -59,8 +59,8 @@ public class Scene01Events : MonoBehaviour
         nextButton.SetActive(false);
         charHaruka.SetActive(false);
         textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Haruka";
-        textToSpeak = "I was hiding over in the corner.";
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
+        textToSpeak = "It's hard to believe this used to be a utopia.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -80,7 +80,7 @@ public class Scene01Events : MonoBehaviour
         charHaruka.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "Oh, you startled me. I didn't expect you there.";
+        textToSpeak = "Though, you can find some good and peace in a corners.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -102,7 +102,7 @@ public class Scene01Events : MonoBehaviour
         charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "I'm sorry I didn't mean to... Let's go to the park and look for Akane";
+        textToSpeak = "But just like the law of balance, every good must come with evil.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -124,7 +124,7 @@ public class Scene01Events : MonoBehaviour
         charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "That's a great idea. Let's go!";
+        textToSpeak = "Even if it outweights over the other...";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -176,6 +176,4 @@ public class Scene01Events : MonoBehaviour
             StartCoroutine(EventFive());
         }
     }
-
-
 }
