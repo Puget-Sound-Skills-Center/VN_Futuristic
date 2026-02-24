@@ -67,8 +67,7 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
-        yield return new WaitForSeconds(0.5f);
-        girlGasp.Play();
+        yield return new WaitForSeconds(0.5f); 
         nextButton.SetActive(true);
         eventPos = 2;
     }

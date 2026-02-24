@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,16 @@ public class Scene02Event : MonoBehaviour
 {
     public GameObject textBox;
     [SerializeField] GameObject fadeScreenIn;
-    [SerializeField] GameObject charKasumi;
+    [SerializeField] GameObject MigrationOfficer;
+    [SerializeField] GameObject Mother;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
     [SerializeField] int textLength;
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] int eventPos = 0;
-    [SerializeField] GameObject treeInteract;
-    [SerializeField] GameObject houseInteract;
+    //[SerializeField] GameObject treeInteract;
+    //[SerializeField] GameObject houseInteract;
     [SerializeField] GameObject charAkane;
     [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject charName;
@@ -25,11 +27,21 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] GameObject nightBGM;
     [SerializeField] int randomScene;
 
+    // Animator for Mother bounce animation (assign in Inspector or it will be auto-found)
+    [SerializeField] Animator motherAnimator;
+
+    void Awake()
+    {
+        // Auto-find Animator on Mother if not assigned in the Inspector
+        if (motherAnimator == null && Mother != null)
+            motherAnimator = Mother.GetComponent<Animator>();
+    }
+
     void Start()
     {
         PlayerPrefs.SetInt("LoadState", 2);
         randomScene = Random.Range(1, 3);
-        if(randomScene == 1)
+        if (randomScene == 1)
         {
             parkDay.SetActive(true);
             dayBGM.SetActive(true);
@@ -53,13 +65,12 @@ public class Scene02Event : MonoBehaviour
     {
         // event 0
         yield return new WaitForSeconds(2);
-        fadeScreenIn.SetActive(false);
-        fadeScreenIn.SetActive(false);
-        charKasumi.SetActive(true);
+        fadeScreenIn.SetActive(true);
         yield return new WaitForSeconds(2);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
-        textToSpeak = "Let's start looking for Akane.";
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Sorry miss, but your visa has been declined.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -67,36 +78,111 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        //nextButton.SetActive(true);
+        nextButton.SetActive(true);
         eventPos = 1;
-        // auto start looking for Akane
-        yield return new WaitForSeconds(2);
-        charKasumi.SetActive(false);
-        mainTextObject.SetActive(false);
-        treeInteract.SetActive(true);
-        houseInteract.SetActive(true);
-
     }
 
-    public void TreeInteract()
+    IEnumerator EventOne()
     {
-        StartCoroutine(TreeInteractSeq());
+        //event 1
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "W-what?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        // Play bounce animation on Mother (Animator must have a clip/state named "Bounce")
+        if (motherAnimator == null && Mother != null)
+            motherAnimator = Mother.GetComponent<Animator>();
+
+        if (motherAnimator != null)
+        {
+            // Trigger a bounce (if you use a trigger parameter instead of a direct state name,
+            // replace SetTrigger with the parameter name you configured)
+            // Example: motherAnimator.SetTrigger("BounceTrigger");
+            // The coroutine below will try to play the state named "Bounce" and wait for its length.
+            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "Bounce"));
+        }
+        else
+        {
+            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. Bounce animation skipped.");
+        }
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 2;
     }
 
-    public void BuildingInteract()
+    /// <summary>
+    /// Plays an Animator state/clip by name and waits for the clip length if found in the controller.
+    /// The Animator Controller must contain an AnimationClip with the same name as clipName or a state with that name.
+    /// </summary>
+    IEnumerator PlayAnimationAndWait(Animator animator, string clipName)
     {
-        StartCoroutine(BuildingInteractSeq());
+        if (animator == null)
+            yield break;
+
+        // Try to find clip length from controller clips
+        float clipLength = 0f;
+        var controller = animator.runtimeAnimatorController;
+        if (controller != null)
+        {
+            foreach (var clip in controller.animationClips)
+            {
+                if (clip != null && clip.name == clipName)
+                {
+                    clipLength = clip.length;
+                    break;
+                }
+            }
+        }
+
+        // Play the state (state name must match clipName or be a state with that name)
+        animator.Play(clipName, 0, 0f);
+
+        if (clipLength > 0f)
+        {
+            yield return new WaitForSeconds(clipLength);
+        }
+        else
+        {
+            // Fallback: wait up to 1.5s for Animator to enter the state, then wait state.length if available
+            yield return null;
+            float timeout = 1.5f;
+            float timer = 0f;
+            while (timer < timeout)
+            {
+                var state = animator.GetCurrentAnimatorStateInfo(0);
+                if (state.IsName(clipName))
+                {
+                    float stateLength = state.length;
+                    if (stateLength > 0f)
+                        yield return new WaitForSeconds(stateLength);
+                    else
+                        yield return new WaitForSeconds(0.25f);
+                    yield break;
+                }
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            // Timed out; continue without further waiting.
+        }
     }
 
-    IEnumerator TreeInteractSeq()
+    IEnumerator EventTwo()
     {
-        treeInteract.SetActive(false);
-        houseInteract.SetActive(false);
-        charKasumi.SetActive(true);
-        yield return new WaitForSeconds(2);
-        // this is where our text function will go in future tutorial
-        mainTextObject.SetActive(true);
-        textToSpeak = "Nope, Akane is not behind the tree.";
+        //event 2
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Your access to the west district is denied, you’ll have to return home for now.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -104,41 +190,252 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        //nextButton.SetActive(true);
-        eventPos = 1;
-        // auto start looking for Akane
-        yield return new WaitForSeconds(2);
-        charKasumi.SetActive(false);
-        mainTextObject.SetActive(false);
-        houseInteract.SetActive(true);
-
-    }
-
-    IEnumerator BuildingInteractSeq()
-    {
-        treeInteract.SetActive(false);
-        houseInteract.SetActive(false);
-        charAkane.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Akane";
-        // this is where our text function will go in future tutorial
-        mainTextObject.SetActive(true);
-        textToSpeak = "Oh you found me. Hehe. Lets all go somewhere else.";
-        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
-        currentTextLength = textToSpeak.Length;
-        TextCreator.runTextPrint = true;
-        yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(1);
-        yield return new WaitUntil(() => textLength == currentTextLength);
-        yield return new WaitForSeconds(0.5f);
-        //nextButton.SetActive(true);
+        nextButton.SetActive(true);
         eventPos = 3;
-        // auto start looking for Akane
-        yield return new WaitForSeconds(2);
-        charAkane.SetActive(false);
-        mainTextObject.SetActive(false);
-        fadeOut.SetActive(true);
-
     }
 
+    IEnumerator EventThree()
+    {
+        //event 3
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "But… How?! My visa doesn’t have any problems! How is this possible?!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 4;
+    }
+
+    IEnumerator EventFour()
+    {
+        //event 4
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Unfortunately, there’s been an error in the system which temporarily nullified your visa privileges, you will have to return home until the situation is handled.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 5;
+    }
+
+    IEnumerator EventFive()
+    {
+        //event 5
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "This… Can’t be happening…  I-I have to cross! My child needs medication!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 6;
+    }
+
+    IEnumerator EventSix()
+    {
+        //event 6
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Sorry, miss, but protocol says no one can cross districts until the situation is resolved.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 7;
+    }
+
+    IEnumerator EventSeven()
+    {
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "Please! I need to cross! My husband is waiting for me on the other side! My family is waiting for me!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 8;
+    }
+
+    IEnumerator EventEight()
+    {
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Like I said, miss, you’ll have to return home until the situation is resolved like everyone else, there’s simply nothing else I can do for you.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 9;
+    }
+
+    IEnumerator EventNine()
+    {
+        nextButton.SetActive(false);
+        MigrationOfficer.SetActive(true);
+        Mother.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "...";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        // Play bounce animation on Mother (Animator must have a clip/state named "Bounce")
+        if (motherAnimator == null && Mother != null)
+            motherAnimator = Mother.GetComponent<Animator>();
+
+        if (motherAnimator != null)
+        {
+            // Trigger a bounce (if you use a trigger parameter instead of a direct state name,
+            // replace SetTrigger with the parameter name you configured)
+            // Example: motherAnimator.SetTrigger("BounceTrigger");
+            // The coroutine below will try to play the state named "Bounce" and wait for its length.
+            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "Bounce"));
+        }
+        else
+        {
+            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. Bounce animation skipped.");
+        }
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 10;
+    }
+
+    IEnumerator EventTen()
+    {
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "...";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        // Play WalkAway animation on Mother (Animator must have a clip/state named "WalkAway")
+        if (motherAnimator == null && Mother != null)
+            motherAnimator = Mother.GetComponent<Animator>();
+
+        if (motherAnimator != null)
+        {
+            // Trigger a WalkAway (if you use a trigger parameter instead of a direct state name,
+            // replace SetTrigger with the parameter name you configured)
+            // Example: motherAnimator.SetTrigger("WalkAwayTrigger");
+            // The coroutine below will try to play the state named "WalkAway" and wait for its length.
+            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "WalkAway"));
+        }
+        else
+        {
+            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. WalkAway animation skipped.");
+        }
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 11;
+    }
+
+    public void NextButton()
+    {
+        if (eventPos == 0)
+        {
+            StartCoroutine(EventStarter());
+        }
+
+        if (eventPos == 1)
+        {
+            StartCoroutine(EventOne());
+        }
+
+        if (eventPos == 2)
+        {
+            StartCoroutine(EventTwo());
+        }
+
+        if (eventPos == 3)
+        {
+            StartCoroutine(EventThree());
+        }
+
+        if (eventPos == 4)
+        {
+            StartCoroutine(EventFour());
+        }
+
+        if (eventPos == 5)
+        {
+            StartCoroutine(EventFive());
+        }
+
+        if (eventPos == 6)
+        {
+            StartCoroutine(EventSix());
+        }
+
+        if (eventPos == 7)
+        {
+            StartCoroutine(EventSeven());
+        }
+
+        if (eventPos == 8)
+        {
+            StartCoroutine(EventEight());
+        }
+
+        if (eventPos == 9)
+        {
+            StartCoroutine(EventNine());
+        }
+
+        if (eventPos == 10)
+        {
+            StartCoroutine(EventTen());
+        }
+    }
 }
