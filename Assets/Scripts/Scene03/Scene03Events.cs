@@ -37,10 +37,10 @@ public class Scene03Events : MonoBehaviour
         // event 0
         yield return new WaitForSeconds(2);
         fadeScreenIn.SetActive(true);
+        charMother.SetActive(true);
         yield return new WaitForSeconds(1);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
-        charMother.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "...";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
@@ -152,9 +152,10 @@ public class Scene03Events : MonoBehaviour
     IEnumerator EventSix()
     {
         // event 6
-        yield return new WaitForSeconds(2);
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        textBox.SetActive(false);
+        yield return new WaitForSeconds(2);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Intercom";
         textToSpeak = "Attention, all refugees; unfortunately the system has been receiving some setbacks at the moment regarding the errors in everyone’s visas declining. At the moment, everyone must stay in their camps or return home until further notice.";

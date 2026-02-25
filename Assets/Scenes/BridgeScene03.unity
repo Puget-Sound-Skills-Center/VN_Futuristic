@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 170.99925, y: 277.00006}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 262.48254, y: 277.00006}
+  m_SizeDelta: {x: 463.6293, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &20558073
 MonoBehaviour:
@@ -874,8 +874,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scene01Events, Assembly-CSharp
+      - m_Target: {fileID: 1501613896}
+        m_TargetAssemblyTypeName: Scene03Events, Assembly-CSharp
         m_MethodName: NextButton
         m_Mode: 1
         m_Arguments:
@@ -1531,8 +1531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreenIn: {fileID: 1223036401}
   charMother: {fileID: 194535034}
-  CharRefugee1: {fileID: 0}
-  charRefugee2: {fileID: 0}
+  CharRefugee1: {fileID: 1604928640}
+  charRefugee2: {fileID: 675281380}
   textBox: {fileID: 1878115938}
   girlSigh: {fileID: 0}
   girlGasp: {fileID: 0}
