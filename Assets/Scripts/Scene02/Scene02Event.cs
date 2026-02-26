@@ -17,8 +17,8 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] int eventPos = 0;
-    //[SerializeField] GameObject treeInteract;
-    //[SerializeField] GameObject houseInteract;
+    [SerializeField] GameObject Choice1;
+    [SerializeField] GameObject Choice2;
     [SerializeField] GameObject charAkane;
     [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject charName;
@@ -196,8 +196,41 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
+        //nextButton.SetActive(true);
         eventPos = 3;
+        // auto start choice buttons
+        yield return new WaitForSeconds(1);
+        mainTextObject.SetActive(false);
+        Choice1.SetActive(true);
+        Choice2.SetActive(true);
+    }
+
+    public void Choice1Event()
+    {
+        StartCoroutine(Choice1Seq());
+    }
+
+    IEnumerator Choice1Seq()
+    {
+        Choice1.SetActive(false);
+        Choice2.SetActive(false);
+        mainTextObject.SetActive(true);
+        nextButton.SetActive(false);
+        Mother.SetActive(true);
+        MotherAgitated.SetActive(false);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "This is the first choice sequence.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 4;
     }
 
     IEnumerator EventThree()
