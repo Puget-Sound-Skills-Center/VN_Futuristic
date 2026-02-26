@@ -9,6 +9,8 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] GameObject fadeScreenIn;
     [SerializeField] GameObject MigrationOfficer;
     [SerializeField] GameObject Mother;
+    [SerializeField] GameObject MotherAgitated;
+    [SerializeField] GameObject MotherDesperate;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
     [SerializeField] int textLength;
@@ -32,7 +34,7 @@ public class Scene02Event : MonoBehaviour
 
     void Awake()
     {
-        // Auto-find Animator on Mother if not assigned in the Inspector
+        // Auto-find animator on Mother if not assigned in inspector
         if (motherAnimator == null && Mother != null)
             motherAnimator = Mother.GetComponent<Animator>();
     }
@@ -114,13 +116,14 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
+
         nextButton.SetActive(true);
         eventPos = 2;
     }
 
     /// <summary>
-    /// Plays an Animator state/clip by name and waits for the clip length if found in the controller.
-    /// The Animator Controller must contain an AnimationClip with the same name as clipName or a state with that name.
+    /// Plays an Animator state/clip by name and waits for the clip length if the clip is found in the controller.
+    /// The Animator must contain a state/clip with exactly the same name as clipName.
     /// </summary>
     IEnumerator PlayAnimationAndWait(Animator animator, string clipName)
     {
@@ -146,31 +149,34 @@ public class Scene02Event : MonoBehaviour
         animator.Play(clipName, 0, 0f);
 
         if (clipLength > 0f)
-        {
             yield return new WaitForSeconds(clipLength);
-        }
         else
         {
-            // Fallback: wait up to 1.5s for Animator to enter the state, then wait state.length if available
+            // Fallback: wait one frame to allow Animator to switch, then poll for state entry (timeout to avoid infinite loop)
             yield return null;
-            float timeout = 1.5f;
+            float timeout = 1.5f; // seconds
             float timer = 0f;
             while (timer < timeout)
             {
                 var state = animator.GetCurrentAnimatorStateInfo(0);
                 if (state.IsName(clipName))
                 {
+                    // If the state reports a length, use it; otherwise wait a small default
                     float stateLength = state.length;
                     if (stateLength > 0f)
+                    {
                         yield return new WaitForSeconds(stateLength);
+                    }
                     else
-                        yield return new WaitForSeconds(0.25f);
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
                     yield break;
                 }
                 timer += Time.deltaTime;
                 yield return null;
             }
-            // Timed out; continue without further waiting.
+            // If we timed out, just continue
         }
     }
 
@@ -198,7 +204,8 @@ public class Scene02Event : MonoBehaviour
     {
         //event 3
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -218,7 +225,8 @@ public class Scene02Event : MonoBehaviour
     {
         //event 4
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
@@ -238,7 +246,9 @@ public class Scene02Event : MonoBehaviour
     {
         //event 5
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -258,7 +268,9 @@ public class Scene02Event : MonoBehaviour
     {
         //event 6
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
         textToSpeak = "Sorry, miss, but protocol says no one can cross districts until the situation is resolved.";
@@ -276,7 +288,9 @@ public class Scene02Event : MonoBehaviour
     IEnumerator EventSeven()
     {
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -295,7 +309,9 @@ public class Scene02Event : MonoBehaviour
     IEnumerator EventEight()
     {
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
@@ -315,29 +331,15 @@ public class Scene02Event : MonoBehaviour
     {
         nextButton.SetActive(false);
         MigrationOfficer.SetActive(true);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "...";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
-        // Play bounce animation on Mother (Animator must have a clip/state named "Bounce")
-        if (motherAnimator == null && Mother != null)
-            motherAnimator = Mother.GetComponent<Animator>();
-
-        if (motherAnimator != null)
-        {
-            // Trigger a bounce (if you use a trigger parameter instead of a direct state name,
-            // replace SetTrigger with the parameter name you configured)
-            // Example: motherAnimator.SetTrigger("BounceTrigger");
-            // The coroutine below will try to play the state named "Bounce" and wait for its length.
-            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "Bounce"));
-        }
-        else
-        {
-            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. Bounce animation skipped.");
-        }
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
@@ -350,6 +352,8 @@ public class Scene02Event : MonoBehaviour
     {
         nextButton.SetActive(false);
         Mother.SetActive(true);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(false);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
