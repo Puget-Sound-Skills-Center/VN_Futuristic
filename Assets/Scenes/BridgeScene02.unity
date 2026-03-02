@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 89658853}
   - component: {fileID: 89658852}
   m_Layer: 5
-  m_Name: MotherCry (1)
+  m_Name: MotherCryWalkAway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ Animator:
   m_GameObject: {fileID: 89658850}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a838c8c97685e447b43f9bf117b9387, type: 2}
+  m_Controller: {fileID: 9100000, guid: 230ebeb9871e3a240906581883c510d8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3344,6 +3344,7 @@ MonoBehaviour:
   MotherAgitated: {fileID: 1985590531}
   MotherDesperate: {fileID: 750819484}
   MotherCry: {fileID: 732272983}
+  MotherCryWalkAway: {fileID: 89658850}
   textToSpeak: 
   currentTextLength: 0
   textLength: 0
@@ -3363,6 +3364,7 @@ MonoBehaviour:
   nightBGM: {fileID: 1848126182}
   randomScene: 0
   motherAnimator: {fileID: 1316354866}
+  MotherWalkAway: {fileID: 89658852}
 --- !u!4 &1673702150
 Transform:
   m_ObjectHideFlags: 0

@@ -35,12 +35,16 @@ public class Scene02Event : MonoBehaviour
 
     // Animator for Mother bounce/walk animations (assign in Inspector or it will be auto-found)
     [SerializeField] Animator motherAnimator;
+    [SerializeField] Animator MotherWalkAway;
 
     void Awake()
     {
         // Auto-find animator on Mother if not assigned in inspector
         if (motherAnimator == null && Mother != null)
             motherAnimator = Mother.GetComponent<Animator>();
+
+        if (MotherWalkAway == null && MotherCryWalkAway != null)
+            MotherWalkAway = Mother.GetComponent<Animator>();
     }
 
     void Start()
@@ -362,7 +366,7 @@ public class Scene02Event : MonoBehaviour
         ChoiceV1.SetActive(true);
         ChoiceV2.SetActive(true);
         ChoiceV1.GetComponentInChildren<TMPro.TMP_Text>().text = "Plead";
-        ChoiceV2.GetComponentInChildren<TMPro.TMP_Text>().text = "Give up";
+        ChoiceV2.GetComponentInChildren<TMPro.TMP_Text>().text = "Lash out";
         // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
     }
 
@@ -424,7 +428,28 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 8;
+        eventPos = 11;
+    }
+
+    IEnumerator EventEleven()
+    {
+        nextButton.SetActive(false);
+        Mother.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MotherDesperate.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
+        textToSpeak = "Please! I need to cross! My husband is waiting for me on the other side! My family is waiting for me!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 9;
     }
 
     IEnumerator EventSeven()
@@ -507,23 +532,22 @@ public class Scene02Event : MonoBehaviour
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
         // Play WalkAway animation on Mother (Animator must have a clip/state named "WalkAway")
-        if (motherAnimator == null && Mother != null)
-            motherAnimator = Mother.GetComponent<Animator>();
+        if (MotherWalkAway == null && MotherCryWalkAway != null)
+            MotherWalkAway = MotherWalkAway.GetComponent<Animator>();
 
-        if (motherAnimator != null)
+        if (MotherWalkAway != null)
         {
-            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "WalkAway"));
+            yield return StartCoroutine(PlayAnimationAndWait(MotherWalkAway, "WalkAway"));
         }
         else
         {
-            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. WalkAway animation skipped.");
+            Debug.LogWarning("MotherWalkAway not assigned and no Animator found on Mother. WalkAway animation skipped.");
         }
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 11;
     }
 
     public void NextButton()
@@ -581,6 +605,11 @@ public class Scene02Event : MonoBehaviour
         if (eventPos == 10)
         {
             StartCoroutine(EventTen());
+        }
+
+        if (eventPos == 11)
+        {
+            StartCoroutine(EventEleven());
         }
     }
 }
