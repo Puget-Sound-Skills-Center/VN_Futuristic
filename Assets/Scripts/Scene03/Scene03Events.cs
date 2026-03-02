@@ -21,6 +21,11 @@ public class Scene03Events : MonoBehaviour
     [SerializeField] int eventPos = 0;
     [SerializeField] GameObject charName;
     [SerializeField] GameObject fadeOut;
+    [SerializeField] GameObject parkDay;
+    [SerializeField] GameObject parkNight;
+    [SerializeField] GameObject dayBGM;
+    [SerializeField] GameObject nightBGM;
+    [SerializeField] int randomScene;
 
     void Update()
     {
@@ -29,8 +34,21 @@ public class Scene03Events : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("LoadState", 2);
+        randomScene = Random.Range(1, 3);
+        if (randomScene == 1)
+        {
+            parkDay.SetActive(true);
+            dayBGM.SetActive(true);
+        }
+        else
+        {
+            parkNight.SetActive(true);
+            nightBGM.SetActive(true);
+        }
         StartCoroutine(EventStarter());
     }
+
 
     IEnumerator EventStarter()
     {
@@ -80,7 +98,7 @@ public class Scene03Events : MonoBehaviour
         charMother.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
-        textToSpeak = "Y-yeah… They did. I don't understand why or what's going on?";
+        textToSpeak = "Y-yeahâ€¦ They did. I don't understand why or what's going on?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -99,7 +117,7 @@ public class Scene03Events : MonoBehaviour
         charMother.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #1";
-        textToSpeak = "I’m sorry to hear that. I have a husband fighting tooth and nail to get me and my child on the other side but they haven't let me get in contact with him for days.";
+        textToSpeak = "Iâ€™m sorry to hear that. I have a husband fighting tooth and nail to get me and my child on the other side but they haven't let me get in contact with him for days.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -118,7 +136,7 @@ public class Scene03Events : MonoBehaviour
         charMother.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #2";
-        textToSpeak = "Same boat too, my daughter was supposed to start school in the west but we couldn’t get in touch without proper visas.";
+        textToSpeak = "Same boat too, my daughter was supposed to start school in the west but we couldnâ€™t get in touch without proper visas.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -137,7 +155,7 @@ public class Scene03Events : MonoBehaviour
         charMother.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
-        textToSpeak = "I… Just don’t understand, why would they deny us and refuse to explain anything? It doesn’t make sense!";
+        textToSpeak = "Iâ€¦ Just donâ€™t understand, why would they deny us and refuse to explain anything? It doesnâ€™t make sense!";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -158,7 +176,7 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitForSeconds(2);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Intercom";
-        textToSpeak = "Attention, all refugees; unfortunately the system has been receiving some setbacks at the moment regarding the errors in everyone’s visas declining. At the moment, everyone must stay in their camps or return home until further notice.";
+        textToSpeak = "Attention, all refugees; unfortunately the system has been receiving some setbacks at the moment regarding the errors in everyoneâ€™s visas declining. At the moment, everyone must stay in their camps or return home until further notice.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;

@@ -11,6 +11,8 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] GameObject Mother;
     [SerializeField] GameObject MotherAgitated;
     [SerializeField] GameObject MotherDesperate;
+    [SerializeField] GameObject MotherCry;
+    [SerializeField] GameObject MotherCryWalkAway;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
     [SerializeField] int textLength;
@@ -19,6 +21,8 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] int eventPos = 0;
     [SerializeField] GameObject Choice1;
     [SerializeField] GameObject Choice2;
+    [SerializeField] GameObject ChoiceV1;
+    [SerializeField] GameObject ChoiceV2;
     [SerializeField] GameObject charAkane;
     [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject charName;
@@ -29,7 +33,7 @@ public class Scene02Event : MonoBehaviour
     [SerializeField] GameObject nightBGM;
     [SerializeField] int randomScene;
 
-    // Animator for Mother bounce animation (assign in Inspector or it will be auto-found)
+    // Animator for Mother bounce/walk animations (assign in Inspector or it will be auto-found)
     [SerializeField] Animator motherAnimator;
 
     void Awake()
@@ -55,8 +59,6 @@ public class Scene02Event : MonoBehaviour
         }
         StartCoroutine(EventStarter());
     }
-
-
 
     void Update()
     {
@@ -96,15 +98,13 @@ public class Scene02Event : MonoBehaviour
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
+
         // Play bounce animation on Mother (Animator must have a clip/state named "Bounce")
         if (motherAnimator == null && Mother != null)
             motherAnimator = Mother.GetComponent<Animator>();
 
         if (motherAnimator != null)
         {
-            // Trigger a bounce (if you use a trigger parameter instead of a direct state name,
-            // replace SetTrigger with the parameter name you configured)
-            // Example: motherAnimator.SetTrigger("BounceTrigger");
             // The coroutine below will try to play the state named "Bounce" and wait for its length.
             yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "Bounce"));
         }
@@ -196,24 +196,63 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        //nextButton.SetActive(true);
-        eventPos = 3;
-        // auto start choice buttons
-        yield return new WaitForSeconds(1);
+
+        // Prepare and show simple two-option choices (legacy coroutine-based handling)
+        yield return new WaitForSeconds(2);
         mainTextObject.SetActive(false);
         Choice1.SetActive(true);
         Choice2.SetActive(true);
+        Choice1.GetComponentInChildren<TMPro.TMP_Text>().text = "Agitated";
+        Choice2.GetComponentInChildren<TMPro.TMP_Text>().text = "Polite";
+
+        // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
+        // Do NOT block here; choice coroutines will set eventPos when finished.
     }
 
+    // These methods are intended to be assigned to the UI Buttons for the choices.
+    // They now start the coroutine sequences directly (IEnumerator-based flow).
     public void Choice1Event()
     {
+        // disable choices immediately to prevent double clicks and start sequence
+        Choice1.SetActive(false);
+        Choice2.SetActive(false);
         StartCoroutine(Choice1Seq());
+    }
+
+    public void Choice2Event()
+    {
+        Choice1.SetActive(false);
+        Choice2.SetActive(false);
+        StartCoroutine(Choice2Seq());
     }
 
     IEnumerator Choice1Seq()
     {
-        Choice1.SetActive(false);
-        Choice2.SetActive(false);
+        // Outcome for choice 1 (legacy; coroutine-driven)
+        mainTextObject.SetActive(true);
+        nextButton.SetActive(false);
+        Mother.SetActive(false);
+        MotherCry.SetActive(false);
+        MotherDesperate.SetActive(false);
+        MotherAgitated.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "But… How?! My visa doesn’t have any problems! How is this possible?!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 4;
+    }
+
+    IEnumerator Choice2Seq()
+    {
+        // Outcome for choice 2 (legacy; coroutine-driven)
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         Mother.SetActive(true);
@@ -221,7 +260,7 @@ public class Scene02Event : MonoBehaviour
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
-        textToSpeak = "This is the first choice sequence.";
+        textToSpeak = "Oh. Well... Can I ask why that is?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -258,6 +297,7 @@ public class Scene02Event : MonoBehaviour
     {
         //event 4
         nextButton.SetActive(false);
+        mainTextObject.SetActive(true);
         Mother.SetActive(false);
         MotherAgitated.SetActive(true);
         MigrationOfficer.SetActive(true);
@@ -314,8 +354,77 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
+
+        // Prepare and show simple two-option choices (legacy coroutine-based handling)
+        yield return new WaitForSeconds(2);
+        //nextButton.SetActive(true);
+        mainTextObject.SetActive(false);
+        ChoiceV1.SetActive(true);
+        ChoiceV2.SetActive(true);
+        ChoiceV1.GetComponentInChildren<TMPro.TMP_Text>().text = "Plead";
+        ChoiceV2.GetComponentInChildren<TMPro.TMP_Text>().text = "Give up";
+        // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
+    }
+
+    public void ChoiceEvent1Button()
+    {
+        ChoiceV1.SetActive(false);
+        ChoiceV2.SetActive(false);
+        StartCoroutine(ChoiceEvent1());
+    }
+
+    public void ChoiceEvent2Button()
+    {
+        ChoiceV1.SetActive(false);
+        ChoiceV2.SetActive(false);
+        StartCoroutine(ChoiceEvent2());
+    }
+
+    IEnumerator ChoiceEvent1()
+    {
+        // Outcome for choice 1 (legacy; coroutine-driven)
+        mainTextObject.SetActive(true);
+        nextButton.SetActive(false);
+        Mother.SetActive(false);
+        MotherCry.SetActive(false);
+        MotherDesperate.SetActive(false);
+        MotherAgitated.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "Please! I need to cross! My husband is waiting for me on the other side! My family is waiting for me!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 7;
+        eventPos = 6;
+    }
+
+    IEnumerator ChoiceEvent2()
+    {
+        mainTextObject.SetActive(true);
+        nextButton.SetActive(false);
+        Mother.SetActive(false);
+        MotherCry.SetActive(false);
+        MotherDesperate.SetActive(false);
+        MotherAgitated.SetActive(true);
+        MigrationOfficer.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
+        textToSpeak = "Are you serious?! All you can tell us is go home and not elaborate?! My home was destroyed! Did you even try?!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 8;
     }
 
     IEnumerator EventSeven()
@@ -366,7 +475,8 @@ public class Scene02Event : MonoBehaviour
         MigrationOfficer.SetActive(true);
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
-        MotherDesperate.SetActive(true);
+        MotherDesperate.SetActive(false);
+        MotherCry.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "...";
@@ -384,9 +494,11 @@ public class Scene02Event : MonoBehaviour
     IEnumerator EventTen()
     {
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(false);
+        MotherCry.SetActive(false);
+        MotherCryWalkAway.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -400,10 +512,6 @@ public class Scene02Event : MonoBehaviour
 
         if (motherAnimator != null)
         {
-            // Trigger a WalkAway (if you use a trigger parameter instead of a direct state name,
-            // replace SetTrigger with the parameter name you configured)
-            // Example: motherAnimator.SetTrigger("WalkAwayTrigger");
-            // The coroutine below will try to play the state named "WalkAway" and wait for its length.
             yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "WalkAway"));
         }
         else

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eba4cb8adb3e4204c92a09b88bff517d
+guid: 3d03278820ff67c43a5253512f812c83
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6827233407119410554
-    second: MPCOfficer_0
+      213: 1418672323641300202
+    second: crying sprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MPCOfficer_0
+      name: crying sprite_0
       rect:
         serializedVersion: 2
-        x: 68
-        y: 0
-        width: 256
-        height: 629
+        x: 30
+        y: 23
+        width: 264
+        height: 684
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a75480e8c943fbe50800000000000000
-      internalID: 6827233407119410554
+      spriteID: ae4515f36f220b310800000000000000
+      internalID: 1418672323641300202
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MPCOfficer_0: 6827233407119410554
+      crying sprite_0: 1418672323641300202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
