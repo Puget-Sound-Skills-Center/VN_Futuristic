@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 89658853}
   - component: {fileID: 89658852}
   m_Layer: 5
-  m_Name: MotherCry (1)
+  m_Name: MotherCryWalkAway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3344,6 +3344,7 @@ MonoBehaviour:
   MotherAgitated: {fileID: 1985590531}
   MotherDesperate: {fileID: 750819484}
   MotherCry: {fileID: 732272983}
+  MotherCryWalkAway: {fileID: 89658850}
   textToSpeak: 
   currentTextLength: 0
   textLength: 0
