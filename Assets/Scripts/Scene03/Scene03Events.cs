@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Scene03Events : MonoBehaviour
-{ 
+{
     public GameObject fadeScreenIn;
     public GameObject charMother;
     public GameObject CharRefugee1;
@@ -34,7 +34,7 @@ public class Scene03Events : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("LoadState", 3);
+        PlayerPrefs.SetInt("LoadState", 4);
         randomScene = Random.Range(1, 4);
         if (randomScene == 1)
         {

@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BridgeScene03.unity
     guid: 7f6380f948ba7524e842d8eb819f1042
   - enabled: 1
+    path: Assets/Scenes/LimosuineScene01.unity
+    guid: a46617eb1b0f1394494e472c60d64f60
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: aee28c4bf3bae884da324440be89f863
   m_configObjects: {}
