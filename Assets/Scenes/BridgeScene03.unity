@@ -1544,6 +1544,11 @@ MonoBehaviour:
   eventPos: 0
   charName: {fileID: 20558071}
   fadeOut: {fileID: 1197476568}
+  parkDay: {fileID: 427393540}
+  parkNight: {fileID: 427393540}
+  dayBGM: {fileID: 1330054301}
+  nightBGM: {fileID: 1330054301}
+  randomScene: 0
 --- !u!1 &1568341810
 GameObject:
   m_ObjectHideFlags: 0

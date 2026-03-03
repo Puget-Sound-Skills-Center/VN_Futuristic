@@ -2,13 +2,18 @@ using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene02Event : MonoBehaviour
 {
     public GameObject textBox;
     [SerializeField] GameObject fadeScreenIn;
     [SerializeField] GameObject MigrationOfficer;
+    [SerializeField] GameObject MigrationOfficerHeadTilt;
+    [SerializeField] GameObject MigrationOfficerFinger;
+    [SerializeField] GameObject MigrationOfficerHandWave;
     [SerializeField] GameObject Mother;
+    [SerializeField] GameObject MotherStunned;
     [SerializeField] GameObject MotherAgitated;
     [SerializeField] GameObject MotherDesperate;
     [SerializeField] GameObject MotherCry;
@@ -36,6 +41,7 @@ public class Scene02Event : MonoBehaviour
     // Animator for Mother bounce/walk animations (assign in Inspector or it will be auto-found)
     [SerializeField] Animator motherAnimator;
     [SerializeField] Animator MotherWalkAway;
+    [SerializeField] Animator StunBounce;
 
     void Awake()
     {
@@ -45,12 +51,15 @@ public class Scene02Event : MonoBehaviour
 
         if (MotherWalkAway == null && MotherCryWalkAway != null)
             MotherWalkAway = Mother.GetComponent<Animator>();
+
+        if (StunBounce == null && MotherStunned != null)
+            StunBounce = Mother.GetComponent<Animator>();
     }
 
     void Start()
     {
         PlayerPrefs.SetInt("LoadState", 2);
-        randomScene = Random.Range(1, 3);
+        randomScene = Random.Range(1, 4);
         if (randomScene == 1)
         {
             parkDay.SetActive(true);
@@ -94,7 +103,8 @@ public class Scene02Event : MonoBehaviour
     {
         //event 1
         nextButton.SetActive(false);
-        Mother.SetActive(true);
+        Mother.SetActive(false);
+        MotherStunned.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -102,25 +112,11 @@ public class Scene02Event : MonoBehaviour
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
-
-        // Play bounce animation on Mother (Animator must have a clip/state named "Bounce")
-        if (motherAnimator == null && Mother != null)
-            motherAnimator = Mother.GetComponent<Animator>();
-
-        if (motherAnimator != null)
-        {
-            // The coroutine below will try to play the state named "Bounce" and wait for its length.
-            yield return StartCoroutine(PlayAnimationAndWait(motherAnimator, "Bounce"));
-        }
-        else
-        {
-            Debug.LogWarning("motherAnimator not assigned and no Animator found on Mother. Bounce animation skipped.");
-        }
+        yield return StartCoroutine(PlayAnimationAndWait(StunBounce, "Bounce"));
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-
         nextButton.SetActive(true);
         eventPos = 2;
     }
@@ -188,8 +184,10 @@ public class Scene02Event : MonoBehaviour
     {
         //event 2
         nextButton.SetActive(false);
-        Mother.SetActive(true);
-        MigrationOfficer.SetActive(true);
+        Mother.SetActive(false);
+        MotherStunned.SetActive(true);
+        MigrationOfficer.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
         textToSpeak = "Your access to the west district is denied, you’ll have to return home for now.";
@@ -236,10 +234,12 @@ public class Scene02Event : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         Mother.SetActive(false);
+        MotherStunned.SetActive(false);
         MotherCry.SetActive(false);
         MotherDesperate.SetActive(false);
         MotherAgitated.SetActive(true);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHeadTilt.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "But… How?! My visa doesn’t have any problems! How is this possible?!";
@@ -261,7 +261,9 @@ public class Scene02Event : MonoBehaviour
         nextButton.SetActive(false);
         Mother.SetActive(true);
         MotherAgitated.SetActive(false);
+        MotherStunned.SetActive(false);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHeadTilt.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "Oh. Well... Can I ask why that is?";
@@ -282,6 +284,7 @@ public class Scene02Event : MonoBehaviour
         nextButton.SetActive(false);
         Mother.SetActive(false);
         MotherAgitated.SetActive(true);
+        MotherStunned.SetActive(false);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -302,9 +305,11 @@ public class Scene02Event : MonoBehaviour
         //event 4
         nextButton.SetActive(false);
         mainTextObject.SetActive(true);
-        Mother.SetActive(false);
-        MotherAgitated.SetActive(true);
-        MigrationOfficer.SetActive(true);
+        Mother.SetActive(true);
+        MotherStunned.SetActive(false);
+        MotherAgitated.SetActive(false);
+        MigrationOfficer.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
         textToSpeak = "Unfortunately, there’s been an error in the system which temporarily nullified your visa privileges, you will have to return home until the situation is handled.";
@@ -326,7 +331,9 @@ public class Scene02Event : MonoBehaviour
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(true);
+        MotherStunned.SetActive(false);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHeadTilt.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "This… Can’t be happening…  I-I have to cross! My child needs medication!";
@@ -348,6 +355,9 @@ public class Scene02Event : MonoBehaviour
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(true);
+        MotherStunned.SetActive(false);
+        MigrationOfficer.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
         textToSpeak = "Sorry, miss, but protocol says no one can cross districts until the situation is resolved.";
@@ -391,9 +401,11 @@ public class Scene02Event : MonoBehaviour
         nextButton.SetActive(false);
         Mother.SetActive(false);
         MotherCry.SetActive(false);
-        MotherDesperate.SetActive(false);
-        MotherAgitated.SetActive(true);
+        MotherStunned.SetActive(false);
+        MotherDesperate.SetActive(true);
+        MotherAgitated.SetActive(false);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHeadTilt.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "Please! I need to cross! My husband is waiting for me on the other side! My family is waiting for me!";
@@ -405,7 +417,7 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 6;
+        eventPos = 8;
     }
 
     IEnumerator ChoiceEvent2()
@@ -413,10 +425,12 @@ public class Scene02Event : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         Mother.SetActive(false);
+        MotherStunned.SetActive(false);
         MotherCry.SetActive(false);
         MotherDesperate.SetActive(false);
         MotherAgitated.SetActive(true);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHeadTilt.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "Are you serious?! All you can tell us is go home and not elaborate?! My home was destroyed! Did you even try?!";
@@ -435,12 +449,14 @@ public class Scene02Event : MonoBehaviour
     {
         nextButton.SetActive(false);
         Mother.SetActive(false);
-        MotherAgitated.SetActive(false);
-        MotherDesperate.SetActive(true);
-        MigrationOfficer.SetActive(true);
+        MotherAgitated.SetActive(true);
+        MotherDesperate.SetActive(false);
+        MigrationOfficer.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(false);
+        MigrationOfficerFinger.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
-        textToSpeak = "Please! I need to cross! My husband is waiting for me on the other side! My family is waiting for me!";
+        textToSpeak = "I understand your frustration, miss, but for everyone's safety, no refugees are permitted to enter or leave the district until further notice. Standard protocol.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -458,6 +474,7 @@ public class Scene02Event : MonoBehaviour
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(true);
+        MotherStunned.SetActive(false);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -479,7 +496,9 @@ public class Scene02Event : MonoBehaviour
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(true);
-        MigrationOfficer.SetActive(true);
+        MigrationOfficer.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(false);
+        MigrationOfficerHandWave.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Migration Officer";
         textToSpeak = "Like I said, miss, you’ll have to return home until the situation is resolved like everyone else, there’s simply nothing else I can do for you.";
@@ -498,9 +517,13 @@ public class Scene02Event : MonoBehaviour
     {
         nextButton.SetActive(false);
         MigrationOfficer.SetActive(true);
+        MigrationOfficerHandWave.SetActive(false);
+        MigrationOfficerFinger.SetActive(false);
+        MigrationOfficerHeadTilt.SetActive(false);
         Mother.SetActive(false);
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(false);
+        MotherStunned.SetActive(false);
         MotherCry.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
@@ -523,6 +546,7 @@ public class Scene02Event : MonoBehaviour
         MotherAgitated.SetActive(false);
         MotherDesperate.SetActive(false);
         MotherCry.SetActive(false);
+        MotherStunned.SetActive(false);
         MotherCryWalkAway.SetActive(true);
         MigrationOfficer.SetActive(true);
         textBox.SetActive(true);
@@ -531,23 +555,15 @@ public class Scene02Event : MonoBehaviour
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
-        // Play WalkAway animation on Mother (Animator must have a clip/state named "WalkAway")
-        if (MotherWalkAway == null && MotherCryWalkAway != null)
-            MotherWalkAway = MotherWalkAway.GetComponent<Animator>();
-
-        if (MotherWalkAway != null)
-        {
-            yield return StartCoroutine(PlayAnimationAndWait(MotherWalkAway, "WalkAway"));
-        }
-        else
-        {
-            Debug.LogWarning("MotherWalkAway not assigned and no Animator found on Mother. WalkAway animation skipped.");
-        }
+        yield return StartCoroutine(PlayAnimationAndWait(MotherWalkAway, "WalkAway"));
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(2);
+        eventPos = 9;
+        SceneManager.LoadScene("BridgeScene03");
     }
 
     public void NextButton()

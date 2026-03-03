@@ -144,7 +144,7 @@ public class Scene01Events : MonoBehaviour
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
         eventPos = 4;
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("BridgeScene02");
     }
 
     public void NextButton()

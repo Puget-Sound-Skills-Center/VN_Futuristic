@@ -34,8 +34,8 @@ public class Scene03Events : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("LoadState", 2);
-        randomScene = Random.Range(1, 3);
+        PlayerPrefs.SetInt("LoadState", 3);
+        randomScene = Random.Range(1, 4);
         if (randomScene == 1)
         {
             parkDay.SetActive(true);
@@ -55,8 +55,8 @@ public class Scene03Events : MonoBehaviour
         // event 0
         yield return new WaitForSeconds(2);
         fadeScreenIn.SetActive(true);
+        yield return new WaitForSeconds(2);
         charMother.SetActive(true);
-        yield return new WaitForSeconds(1);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
