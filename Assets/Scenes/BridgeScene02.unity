@@ -304,7 +304,7 @@ Animator:
   m_GameObject: {fileID: 89658850}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a838c8c97685e447b43f9bf117b9387, type: 2}
+  m_Controller: {fileID: 9100000, guid: 230ebeb9871e3a240906581883c510d8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3364,6 +3364,7 @@ MonoBehaviour:
   nightBGM: {fileID: 1848126182}
   randomScene: 0
   motherAnimator: {fileID: 1316354866}
+  MotherWalkAway: {fileID: 89658852}
 --- !u!4 &1673702150
 Transform:
   m_ObjectHideFlags: 0
