@@ -3075,6 +3075,10 @@ MonoBehaviour:
   nextButton: {fileID: 1896204539}
   ChoiceEventButton1: {fileID: 468968208}
   ChoiceEventButton2: {fileID: 1095547117}
+  ChoiceEventButtonV1: {fileID: 0}
+  ChoiceEventButtonV2: {fileID: 0}
+  ChoiceEventButtonX1: {fileID: 0}
+  ChoiceEventButtonX2: {fileID: 0}
   eventPos: 0
   charName: {fileID: 1620389909}
   fadeOut: {fileID: 1560002655}

@@ -17,6 +17,10 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     [SerializeField] GameObject nextButton;
     [SerializeField] GameObject ChoiceEventButton1;
     [SerializeField] GameObject ChoiceEventButton2;
+    [SerializeField] GameObject ChoiceEventButtonV1;
+    [SerializeField] GameObject ChoiceEventButtonV2;
+    [SerializeField] GameObject ChoiceEventButtonX1;
+    [SerializeField] GameObject ChoiceEventButtonX2;
     [SerializeField] int eventPos = 0;
     [SerializeField] GameObject charName;
     [SerializeField] GameObject fadeOut;
@@ -46,7 +50,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'arlin";
-        textToSpeak = "Y’know, that holier-than-thou look is getting old. A wardrobe upgrade wouldn’t hurt, you should let me give you a makeover sometime.";
+        textToSpeak = "Y’know, that holier-than-thou look is getting old. You look like you crawled out of the 1500s, you should let me give you a makeover sometime.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -59,8 +63,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(false);
         ChoiceEventButton1.SetActive(true);
         ChoiceEventButton2.SetActive(true);
-        ChoiceEventButton1.GetComponentInChildren<TMPro.TMP_Text>().text = "Agitated";
-        ChoiceEventButton2.GetComponentInChildren<TMPro.TMP_Text>().text = "Polite";
+        ChoiceEventButton1.GetComponentInChildren<TMPro.TMP_Text>().text = "Insult";
+        ChoiceEventButton2.GetComponentInChildren<TMPro.TMP_Text>().text = "Ignore";
         eventPos = 1;
     }
 
@@ -194,8 +198,67 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
+        //nextButton.SetActive(true);
+        yield return new WaitForSeconds(2);
+        mainTextObject.SetActive(false);
+        ChoiceEventButtonV1.SetActive(true);
+        ChoiceEventButtonV2.SetActive(true);
+        ChoiceEventButtonV1.GetComponentInChildren<TMPro.TMP_Text>().text = "Truth";
+        ChoiceEventButtonV2.GetComponentInChildren<TMPro.TMP_Text>().text = "Dismiss";
         eventPos = 4;
+    }
+
+    public void ChoiceEventV1()
+    {
+        // disable choices immediately to prevent double clicks and start sequence
+        ChoiceEventButtonV1.SetActive(false);
+        ChoiceEventButton2.SetActive(false);
+        StartCoroutine(ChoiceSeqV1());
+    }
+    public void ChoiceEventV2()
+    {
+        // disable choices immediately to prevent double clicks and start sequence
+        ChoiceEventButtonV1.SetActive(false);
+        ChoiceEventButtonV2.SetActive(false);
+        StartCoroutine(ChoiceSeqV2());
+    }
+
+    IEnumerator ChoiceSeqV1()
+    {
+        nextButton.SetActive(false);
+        CharThomasValentine.SetActive(true);
+        charDarlin.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
+        textToSpeak = "They will have to resolve it whether they like it or not. When nothing affects nobles, nothing concerns them. That’s simply the human mindset.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 5;
+    }
+
+    IEnumerator ChoiceSeqV2()
+    {
+        nextButton.SetActive(false);
+        CharThomasValentine.SetActive(true);
+        charDarlin.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
+        textToSpeak = "We will discover that for ourselves when we get there. The council is known for leaving concerns that are... 'Out of their control'... to be silent. And as you can tell, nobles from the west district have already grown numb to the lack of communication.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 5;
     }
 
     IEnumerator EventFour()
@@ -292,8 +355,67 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
+        //nextButton.SetActive(true);
+        yield return new WaitForSeconds(2);
+        mainTextObject.SetActive(false);
+        ChoiceEventButtonX1.SetActive(true);
+        ChoiceEventButtonX2.SetActive(true);
+        ChoiceEventButtonX1.GetComponentInChildren<TMPro.TMP_Text>().text = "Truth";
+        ChoiceEventButtonX2.GetComponentInChildren<TMPro.TMP_Text>().text = "Realistic";
         eventPos = 9;
+    }
+
+    public void ChoiceEventX1()
+    {
+        // disable choices immediately to prevent double clicks and start sequence
+        ChoiceEventButtonX1.SetActive(false);
+        ChoiceEventButtonX2.SetActive(false);
+        StartCoroutine(ChoiceSeqX1());
+    }
+    public void ChoiceEventX2()
+    {
+        // disable choices immediately to prevent double clicks and start sequence
+        ChoiceEventButtonX1.SetActive(false);
+        ChoiceEventButtonX2.SetActive(false);
+        StartCoroutine(ChoiceSeqX2());
+    }
+
+    IEnumerator ChoiceSeqX1()
+    {
+        nextButton.SetActive(false);
+        charDarlin.SetActive(true);
+        CharThomasValentine.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
+        textToSpeak = "The Migration system has been a recurring issue for several months, I wouldn’t put it past them to try and brush it aside, but that is an issue I won’t allow to be silent.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 10;
+    }
+
+    IEnumerator ChoiceSeqX2()
+    {
+        nextButton.SetActive(false);
+        charDarlin.SetActive(true);
+        CharThomasValentine.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
+        textToSpeak = "To be quite frank, they'll most likely gaslight the matter into spinning it as justifiable progression, possibly to soften the reputation of themselves and close ties, more specifically MPC.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 10;
     }
 
     IEnumerator EventNine()
