@@ -46,7 +46,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'arlin";
-        textToSpeak = "Y’know, that holier-than-thou look is getting old. A wardrobe upgrade wouldn’t hurt, you should let me give you a makeover sometime.";
+        textToSpeak = "Yâ€™know, that holier-than-thou look is getting old. A wardrobe upgrade wouldnâ€™t hurt, you should let me give you a makeover sometime.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -55,6 +55,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         //nextButton.SetActive(true);
+        yield return new WaitForSeconds(2);
         mainTextObject.SetActive(false);
         ChoiceEventButton1.SetActive(true);
         ChoiceEventButton2.SetActive(true);
@@ -78,7 +79,6 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         StartCoroutine(ChoiceSeq2());
     }
 
-
     IEnumerator ChoiceSeq1()
     {
         mainTextObject.SetActive(true);
@@ -87,7 +87,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "Appearance doesn’t dictate actions or words, but of course it’d be too much of asking you of all people to understand that statement.";
+        textToSpeak = "Appearance doesnâ€™t dictate actions or words, but of course itâ€™d be too much of asking you of all people to understand that statement.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -119,6 +119,25 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         eventPos = 12;
     }
 
+    IEnumerator EventTwelve()
+    {
+        nextButton.SetActive(false);
+        charDarlin.SetActive(true);
+        CharThomasValentine.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
+        textToSpeak = "Or not... Typical you.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 3;
+    }
+
     IEnumerator EventOne()
     {
         // event 1
@@ -127,7 +146,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "Appearance doesn’t dictate actions or words, but of course it’d be too much of asking you of all people to understand that statement.";
+        textToSpeak = "Appearance doesnâ€™t dictate actions or words, but of course itâ€™d be too much of asking you of all people to understand that statement.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -159,24 +178,6 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         eventPos = 3;
     }
 
-    IEnumerator EventTwelve()
-    {
-        nextButton.SetActive(false);
-        charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
-        textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
-        textToSpeak = "Just a suggestion.";
-        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
-        currentTextLength = textToSpeak.Length;
-        TextCreator.runTextPrint = true;
-        yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(1);
-        yield return new WaitUntil(() => textLength == currentTextLength);
-        yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
-        eventPos = 3;
-    }
     IEnumerator EventThree()
     {
         // event 3
@@ -185,7 +186,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
-        textToSpeak = "But… I did hear how the migration system’s been getting out of hand recently, how do you think the council is gonna tackle that?";
+        textToSpeak = "Butâ€¦ I did hear how the migration systemâ€™s been getting out of hand recently, how do you think the council is gonna tackle that?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -205,7 +206,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         charDarlin.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "They will have to resolve it whether they like it or not. When nothing affects nobles, nothing concerns them. That’s simply the human mindset.";
+        textToSpeak = "They will have to resolve it whether they like it or not. When nothing affects nobles, nothing concerns them. Thatâ€™s simply the human mindset.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -283,7 +284,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
-        textToSpeak = "But, that doesn’t answer the question. Council meetings like this continental never happen ever, the rumors are that the matters consist of mercenaries and the plummeting economy of both districts.";
+        textToSpeak = "But, that doesnâ€™t answer the question. Council meetings like this continental never happen ever, the rumors are that the matters consist of mercenaries and the plummeting economy of both districts.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -302,7 +303,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "The Migration system has been a recurring issue for several months, I wouldn’t put it past them to try and brush it aside, but that is an issue I won’t allow to be silent.";
+        textToSpeak = "The Migration system has been a recurring issue for several months, I wouldnâ€™t put it past them to try and brush it aside, but that is an issue I wonâ€™t allow to be silent.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
