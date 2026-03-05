@@ -212,7 +212,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         // disable choices immediately to prevent double clicks and start sequence
         ChoiceEventButtonV1.SetActive(false);
-        ChoiceEventButton2.SetActive(false);
+        ChoiceEventButtonV2.SetActive(false);
         StartCoroutine(ChoiceSeqV1());
     }
     public void ChoiceEventV2()
@@ -225,6 +225,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
 
     IEnumerator ChoiceSeqV1()
     {
+        mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         CharThomasValentine.SetActive(true);
         charDarlin.SetActive(true);
@@ -244,6 +245,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
 
     IEnumerator ChoiceSeqV2()
     {
+        mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         CharThomasValentine.SetActive(true);
         charDarlin.SetActive(true);
@@ -382,6 +384,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
 
     IEnumerator ChoiceSeqX1()
     {
+        mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
@@ -401,12 +404,13 @@ public class LimosuineSceneEvent01 : MonoBehaviour
 
     IEnumerator ChoiceSeqX2()
     {
+        mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "To be quite frank, they'll most likely gaslight the matter into spinning it as justifiable progression, possibly to soften the reputation of themselves and close ties, more specifically MPC.";
+        textToSpeak = "To be quite frank, they'll most likely gaslight the matter into spinning it as justifiable progression, possibly to soften the reputation of themselves and close ties, more specifically MPC.   ";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
