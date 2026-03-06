@@ -18,6 +18,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] AudioSource deskSlam;
+    [SerializeField] AudioSource jazzBGM;
     [SerializeField] GameObject ChoiceEventButton1;
     [SerializeField] GameObject ChoiceEventButton2;
     [SerializeField] GameObject ChoiceEventButtonV1;
@@ -28,6 +29,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     [SerializeField] GameObject charName;
     [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject parkDay;
+    [SerializeField] Animator CharShake01;
+    [SerializeField] Animator CharShake02;
+    [SerializeField] Animator BdgShake03;
     [SerializeField] int randomScene;
 
     void Update()
@@ -39,15 +43,70 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         PlayerPrefs.SetInt("LoadState", 5);
         StartCoroutine(EventStarter());
+        jazzBGM.Play();
     }
 
+    IEnumerator PlayAnimationAndWait(Animator animator, string clipName)
+    {
+        if (animator == null)
+            yield break;
+
+        // Try to find clip length from controller clips
+        float clipLength = 0f;
+        var controller = animator.runtimeAnimatorController;
+        if (controller != null)
+        {
+            foreach (var clip in controller.animationClips)
+            {
+                if (clip != null && clip.name == clipName)
+                {
+                    clipLength = clip.length;
+                    break;
+                }
+            }
+        }
+
+        // Play the state (state name must match clipName or be a state with that name)
+        animator.Play(clipName, 0, 0f);
+
+        if (clipLength > 0f)
+            yield return new WaitForSeconds(clipLength);
+        else
+        {
+            // Fallback: wait one frame to allow Animator to switch, then poll for state entry (timeout to avoid infinite loop)
+            yield return null;
+            float timeout = 1.5f; // seconds
+            float timer = 0f;
+            while (timer < timeout)
+            {
+                var state = animator.GetCurrentAnimatorStateInfo(0);
+                if (state.IsName(clipName))
+                {
+                    // If the state reports a length, use it; otherwise wait a small default
+                    float stateLength = state.length;
+                    if (stateLength > 0f)
+                    {
+                        yield return new WaitForSeconds(stateLength);
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
+                    yield break;
+                }
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            // If we timed out, just continue
+        }
+    }
 
     IEnumerator EventStarter()
     {
         // event 0
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         fadeScreenIn.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         charKT.SetActive(true);
         charCoin.SetActive(true);
         // this is where our text function will go in future tutorial
@@ -68,8 +127,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventOne()
     {
         // event 1
-        ChoiceEventButton1.SetActive(false);
-        ChoiceEventButton2.SetActive(false);
+        nextButton.SetActive(false);
         charKT.SetActive(true);
         charCoin.SetActive(true);
         mainTextObject.SetActive(true);
@@ -89,11 +147,10 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventTwo()
     {
         // event 2
-        mainTextObject.SetActive(false);
+        nextButton.SetActive(false);
         charTobaccio.SetActive(false);
         charCoin.SetActive(true);
         charKT.SetActive(true);
-        yield return new WaitForSeconds(1);
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "About 6,000 visas declined this morning alone. All from a system error apparently.";
@@ -115,8 +172,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charCoin.SetActive(true);
         textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #1";
-        textToSpeak = "What happened? Did they deny your visa too?";
+        charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
+        textToSpeak = "How much you wanna bet it was a hack by another merc?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -125,16 +182,18 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 2;
+        eventPos = 4;
     }
 
     IEnumerator EventFour()
     {
-        mainTextObject.SetActive(false);
-        yield return new WaitForSeconds(1);
-        mainTextObject.SetActive(true);
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charTobaccio.SetActive(false);
+        charCoin.SetActive(true);
+        textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
-        textToSpeak = "‘I’d bet a 5. Only because there’s not really a whole lot you can do with a bunch of refugee’s visas and IDs, buying and selling immigrant data is useless, and doesn't hold much value for anything. I’d guess if it was a hack, this was just a slip up at best.";
+        textToSpeak = "I’d bet a 5. Only because there’s not really a whole lot you can do with a bunch of refugee’s visas and IDs, buying and selling immigrant data is useless, and doesn't hold much value for anything. I’d guess if it was a hack, this was just a slip up at best.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -183,7 +242,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 6;
+        eventPos = 7;
     }
 
     IEnumerator EventSeven()
@@ -203,7 +262,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 6;
+        eventPos = 8;
     }
 
     IEnumerator EventEight()
@@ -223,7 +282,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
-        eventPos = 6;
+        eventPos = 9;
     }
 
     IEnumerator EventNine()
@@ -234,19 +293,22 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charCoin.SetActive(true);
         textBox.SetActive(false);
+        deskSlam.Play();
+        yield return StartCoroutine(PlayAnimationAndWait(BdgShake03, "BdgShake"));
+        yield return StartCoroutine(PlayAnimationAndWait(CharShake01, "CharShake01"));
+        yield return StartCoroutine(PlayAnimationAndWait(CharShake02, "CharShake02"));
         charName.GetComponent<TMPro.TMP_Text>().text = "";
         textToSpeak = "";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
-        deskSlam.Play();
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(2);
         nextButton.SetActive(true);
-        eventPos = 6;
+        eventPos = 10;
     }
 
     public void NextButton()
