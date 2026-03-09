@@ -79,7 +79,7 @@ public class Scene01Events : MonoBehaviour
         charHaruka.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "Though, you can find some good and peace in a corners.";
+        textToSpeak = "Though, you can find some good and peace in every corners.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -123,7 +123,7 @@ public class Scene01Events : MonoBehaviour
         charKasumiDefault.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "Even if it outweights over the other...";
+        textToSpeak = "Even if one outweights the other...";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -142,8 +142,10 @@ public class Scene01Events : MonoBehaviour
         charHaruka.SetActive(false);
         textBox.SetActive(true);
         fadeOut.SetActive(true);
-        yield return new WaitForSeconds(2);
         eventPos = 4;
+        yield return new WaitForSeconds(2);
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("BridgeScene02");
     }
 

@@ -477,6 +477,9 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
         eventPos = 11;
+        yield return new WaitForSeconds(2);
+        fadeOut.SetActive(false);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("HotelLobbyScene01");
     }
 
