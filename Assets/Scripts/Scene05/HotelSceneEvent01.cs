@@ -9,8 +9,11 @@ public class HotelSceneEvent01 : MonoBehaviour
 {
     public GameObject fadeScreenIn;
     public GameObject charKT;
+    public GameObject charKT2;
     public GameObject charCoin;
     public GameObject charTobaccio;
+    public GameObject charTobaccio2;
+    public GameObject charFrontDesk;
     public GameObject textBox;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
@@ -32,6 +35,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     [SerializeField] Animator CharShake01;
     [SerializeField] Animator CharShake02;
     [SerializeField] Animator BdgShake03;
+    [SerializeField] Animator CharSlideAway01;
+    [SerializeField] Animator CharSlideAway02;
+    [SerializeField] Animator CharSlideIn01;
+    [SerializeField] Animator CharSlideIn02;
+    [SerializeField] Animator TobaccioSlideIn03;
     [SerializeField] int randomScene;
 
     void Update()
@@ -41,7 +49,7 @@ public class HotelSceneEvent01 : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("LoadState", 5);
+        PlayerPrefs.SetInt("LoadState", 6);
         StartCoroutine(EventStarter());
         jazzBGM.Play();
     }
@@ -107,7 +115,11 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(3);
         fadeScreenIn.SetActive(true);
         yield return new WaitForSeconds(3);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
         charKT.SetActive(true);
+        charKT2.SetActive(false);
         charCoin.SetActive(true);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
@@ -128,7 +140,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         // event 1
         nextButton.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
         charKT.SetActive(true);
+        charKT2.SetActive(false);
         charCoin.SetActive(true);
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
@@ -149,8 +165,11 @@ public class HotelSceneEvent01 : MonoBehaviour
         // event 2
         nextButton.SetActive(false);
         charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
         charCoin.SetActive(true);
         charKT.SetActive(true);
+        charKT2.SetActive(false);
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "About 6,000 visas declined this morning alone. All from a system error apparently.";
@@ -170,7 +189,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "How much you wanna bet it was a hack by another merc?";
@@ -190,7 +212,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "I’d bet a 5. Only because there’s not really a whole lot you can do with a bunch of refugee’s visas and IDs, buying and selling immigrant data is useless, and doesn't hold much value for anything. I’d guess if it was a hack, this was just a slip up at best.";
@@ -210,7 +235,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "But you gotta admit, this also might affect the job market in the west too, people are desperate for jobs more than ever thanks to those fancy pants relying on mercs more than their own workers.";
@@ -230,7 +258,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "True. Most refugees coming from the east all have the same reason, the west market wants more workers, and the refugees from the east want sustainability and jobs.";
@@ -250,7 +281,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "Then how come this ain’t an easy bet to solve?";
@@ -270,7 +304,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "It’s the least of their problems, it’s outlaw haven after all.";
@@ -291,12 +328,41 @@ public class HotelSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charCoin.SetActive(true);
         charTobaccio.SetActive(false);
-        charCoin.SetActive(true);
-        textBox.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
         deskSlam.Play();
         yield return StartCoroutine(PlayAnimationAndWait(BdgShake03, "BdgShake"));
         yield return StartCoroutine(PlayAnimationAndWait(CharShake01, "CharShake01"));
         yield return StartCoroutine(PlayAnimationAndWait(CharShake02, "CharShake02"));
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
+        textToSpeak = "!!!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 10;
+    }
+
+    IEnumerator EventTen()
+    {
+        yield return new WaitForSeconds(1);
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charFrontDesk.SetActive(false);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        yield return StartCoroutine(PlayAnimationAndWait(CharSlideAway01, "SlideAway01"));
+        yield return StartCoroutine(PlayAnimationAndWait(CharSlideAway02, "SlideAway02"));
         charName.GetComponent<TMPro.TMP_Text>().text = "";
         textToSpeak = "";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
@@ -306,9 +372,471 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(2);
         nextButton.SetActive(true);
-        eventPos = 10;
+        eventPos = 11;
+    }
+
+    IEnumerator EventEleven()
+    {
+        yield return new WaitForSeconds(1);
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        yield return StartCoroutine(PlayAnimationAndWait(CharSlideIn01, "SlideIn01"));
+        charName.GetComponent<TMPro.TMP_Text>().text = "";
+        textToSpeak = "";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 12;
+    }
+
+    IEnumerator EventTwelve()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        textToSpeak = "YOU'RE CHARGING HOW MUCH FOR A ROOM?!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 13;
+    }
+
+    IEnumerator EventThirteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Front Desk Lady";
+        textToSpeak = "F-for a luxury suite, i-it’s $500 per night, sir…";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 14;
+    }
+    IEnumerator EventFourteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        yield return StartCoroutine(PlayAnimationAndWait(BdgShake03, "BdgShake"));
+        textToSpeak = "Che Idiozia! What the hell could you possibly offer to justify that price?!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 15;
+    }
+
+    IEnumerator EventFifteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Front Desk Lady";
+        textToSpeak = "W-we offer… um… a king-sized bed, luxury bedding, a spa bathroom with bath essentials, in-room dining, a mini-bar and-";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 16;
+    }
+
+    IEnumerator EventSixteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        textToSpeak = "Wait wait wait wait… You said a mini-bar?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 17;
+    }
+
+    IEnumerator EventSeventeen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Front Desk Lady";
+        textToSpeak = "Y-yes sir. We offer a m-mini-bar… f-fully stocked, with premium s-spirits, wines, and champagne.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 18;
+    }
+
+    IEnumerator EventEighteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        textToSpeak = "...";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 19;
+    }
+
+    IEnumerator EventNineteen()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(false);
+        charFrontDesk.SetActive(true);
+        charTobaccio.SetActive(true);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(false);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        textToSpeak = "You. Woman. Go steal money for me.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 20;
+    }
+
+    IEnumerator EventTwenty()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
+        textToSpeak = "I'll pass, thanks";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 21;
+    }
+
+    IEnumerator EventtwentyOne()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        yield return StartCoroutine(PlayAnimationAndWait(TobaccioSlideIn03, "SlideInTobaccio"));
+        textToSpeak = "Then what’re you idiots yappin’ over there?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 22;
+    }
+
+    IEnumerator EventTwentyTwo()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
+        textToSpeak = "Just talking about the numbers of visa rejections.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 23;
+    }
+
+    IEnumerator EventTwentyThree()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
+        textToSpeak = "And these numbers don’t plan on slowing down anytime soon. People are desperate to make money.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 24;
+    }
+
+    IEnumerator EventTwentyFour()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
+        textToSpeak = "Yeah, and that spells good business for mercs.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 25;
+    }
+
+    IEnumerator EventTwentyFive()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
+        textToSpeak = "I guess, but I’d rather not have to deal with idiots trying to kill us every now and then.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 26;
+    }
+
+    IEnumerator EventTwentySix()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
+        textToSpeak = "You think we should check out the council?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 27;
+    }
+
+    IEnumerator EventTwentySeven()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
+        textToSpeak = "And hear them talk about what? Shit that has nothing to do with anything?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 28;
+    }
+
+    IEnumerator EventTwentyEight()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
+        textToSpeak = "Well, I do know one place where we can watch the meeting without being seen.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 29;
+    }
+
+    IEnumerator EventTwentyNine()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
+        textToSpeak = "And besides, that’s a gamble I think is worth taking, wanna bet on it?";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 30;
+    }
+
+    IEnumerator EventThirty()
+    {
+        nextButton.SetActive(false);
+        charCoin.SetActive(true);
+        charFrontDesk.SetActive(false);
+        charTobaccio.SetActive(false);
+        charTobaccio2.SetActive(true);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio & K.T";
+        textToSpeak = "No.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 31;
     }
 
     public void NextButton()
@@ -357,6 +885,111 @@ public class HotelSceneEvent01 : MonoBehaviour
         if (eventPos == 9)
         {
             StartCoroutine(EventNine());
+        }
+
+        if (eventPos == 10)
+        {
+            StartCoroutine(EventTen());
+        }
+
+        if (eventPos == 11)
+        {
+            StartCoroutine(EventEleven());
+        }
+
+        if (eventPos == 12)
+        {
+            StartCoroutine(EventTwelve());
+        }
+
+        if (eventPos == 13)
+        {
+            StartCoroutine(EventThirteen());
+        }
+
+        if (eventPos == 14)
+        {
+            StartCoroutine(EventFourteen());
+        }
+
+        if (eventPos == 15)
+        {
+            StartCoroutine(EventFifteen());
+        }
+
+        if (eventPos == 16)
+        {
+            StartCoroutine(EventSixteen());
+        }
+
+        if (eventPos == 17)
+        {
+            StartCoroutine(EventSeventeen());
+        }
+
+        if (eventPos == 18)
+        {
+            StartCoroutine(EventEighteen());
+        }
+
+        if (eventPos == 19)
+        {
+            StartCoroutine(EventNineteen());
+        }
+
+        if (eventPos == 20)
+        {
+            StartCoroutine(EventTwenty());
+        }
+
+        if (eventPos == 21)
+        {
+            StartCoroutine(EventtwentyOne());
+        }
+
+        if (eventPos == 22)
+        {
+            StartCoroutine(EventTwentyTwo());
+        }
+
+        if (eventPos == 23)
+        {
+            StartCoroutine(EventTwentyThree());
+        }
+
+        if (eventPos == 24)
+        {
+            StartCoroutine(EventTwentyFour());
+        }
+
+        if (eventPos == 25)
+        {
+            StartCoroutine(EventTwentyFive());
+        }
+
+        if (eventPos == 26)
+        {
+            StartCoroutine(EventTwentySix());
+        }
+
+        if (eventPos == 27)
+        {
+            StartCoroutine(EventTwentySeven());
+        }
+
+        if (eventPos == 28)
+        {
+            StartCoroutine(EventTwentyEight());
+        }
+
+        if (eventPos == 29)
+        {
+            StartCoroutine(EventTwentyNine());
+        }
+
+        if (eventPos == 30)
+        {
+            StartCoroutine(EventThirty());
         }
     }
 }

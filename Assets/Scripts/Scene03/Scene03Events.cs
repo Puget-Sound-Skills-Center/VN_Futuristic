@@ -186,6 +186,7 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
         eventPos = 7;
+        SceneManager.LoadScene("LimosuineScene01");
     }
 
     public void NextButton()
