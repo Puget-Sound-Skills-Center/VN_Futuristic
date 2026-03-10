@@ -198,9 +198,15 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
+<<<<<<< Updated upstream
         nextButton.SetActive(false);
         eventPos = 3;
         // Prepare and show simple two-option choices (legacy coroutine-based handling)
+=======
+        nextButton.SetActive(true);
+        eventPos = 2_5;
+        //Prepare and show simple two-option choices (legacy coroutine-based handling)
+>>>>>>> Stashed changes
         yield return new WaitForSeconds(2);
         mainTextObject.SetActive(true);
         Choice1.SetActive(true);
@@ -211,6 +217,10 @@ public class Scene02Event : MonoBehaviour
         // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
         // Do NOT block here; choice coroutines will set eventPos when finished.
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     // These methods are intended to be assigned to the UI Buttons for the choices.
     // They now start the coroutine sequences directly (IEnumerator-based flow).
