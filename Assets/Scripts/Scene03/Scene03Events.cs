@@ -9,6 +9,7 @@ public class Scene03Events : MonoBehaviour
     public GameObject fadeScreenIn;
     public GameObject charMother;
     public GameObject CharRefugee1;
+    public GameObject charRefugee1MouthOpen;
     public GameObject charRefugee2;
     public GameObject textBox;
     [SerializeField] AudioSource girlSigh;
@@ -77,6 +78,8 @@ public class Scene03Events : MonoBehaviour
         // event 1
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(false);
+        charRefugee1MouthOpen.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #1";
         textToSpeak = "What happened? Did they deny your visa too?";
@@ -96,6 +99,8 @@ public class Scene03Events : MonoBehaviour
         // event 2
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(true);
+        charRefugee1MouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "Y-yeah… They did. I don't understand why or what's going on?";
@@ -115,6 +120,8 @@ public class Scene03Events : MonoBehaviour
         // event 3
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(false);
+        charRefugee1MouthOpen.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #1";
         textToSpeak = "I’m sorry to hear that. I have a husband fighting tooth and nail to get me and my child on the other side but they haven't let me get in contact with him for days.";
@@ -134,6 +141,8 @@ public class Scene03Events : MonoBehaviour
         // event 4
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(true);
+        charRefugee1MouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Refugee #2";
         textToSpeak = "Same boat too, my daughter was supposed to start school in the west but we couldn’t get in touch without proper visas.";
@@ -153,6 +162,8 @@ public class Scene03Events : MonoBehaviour
         // event 5
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(true);
+        charRefugee1MouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
         textToSpeak = "I… Just don’t understand, why would they deny us and refuse to explain anything? It doesn’t make sense!";
@@ -172,6 +183,8 @@ public class Scene03Events : MonoBehaviour
         // event 6
         nextButton.SetActive(false);
         charMother.SetActive(true);
+        CharRefugee1.SetActive(true);
+        charRefugee1MouthOpen.SetActive(false);
         textBox.SetActive(false);
         yield return new WaitForSeconds(2);
         textBox.SetActive(true);

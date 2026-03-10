@@ -753,8 +753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1357, y: 400}
-  m_SizeDelta: {x: 800, y: 800}
+  m_AnchoredPosition: {x: 1315.4078, y: 432.2}
+  m_SizeDelta: {x: 529.4964, y: 1139.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675281382
 MonoBehaviour:
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 4df2d8934d675dd4987e1ca92d3ada7a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1070,7 +1070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1223036402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1532,6 +1532,7 @@ MonoBehaviour:
   fadeScreenIn: {fileID: 1223036401}
   charMother: {fileID: 194535034}
   CharRefugee1: {fileID: 1604928640}
+  charRefugee1MouthOpen: {fileID: 1640742330}
   charRefugee2: {fileID: 675281380}
   textBox: {fileID: 1878115938}
   girlSigh: {fileID: 0}
@@ -1745,8 +1746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -432.3529, y: 434.36}
-  m_SizeDelta: {x: 509.8257, y: 910.72}
+  m_AnchoredPosition: {x: -409.60687, y: 376.66617}
+  m_SizeDelta: {x: 655.8254, y: 1133.9122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604928642
 MonoBehaviour:
@@ -1768,7 +1769,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 68e159d62912f6244ba6583793597e1c, type: 3}
+  m_Texture: {fileID: 2800000, guid: b097e9991c23b754fb7dfaf805a18b19, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1927,8 +1928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -436.6487, y: 434.36}
-  m_SizeDelta: {x: 518.4174, y: 910.72}
+  m_AnchoredPosition: {x: -423.42426, y: 376.67}
+  m_SizeDelta: {x: 544.8661, y: 1133.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640742332
 MonoBehaviour:
@@ -1950,7 +1951,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7b4f9dc589cb92d4eaa2ccf5394be046, type: 3}
+  m_Texture: {fileID: 2800000, guid: 9643530c8564b0d4889ea5c5a6941ce2, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

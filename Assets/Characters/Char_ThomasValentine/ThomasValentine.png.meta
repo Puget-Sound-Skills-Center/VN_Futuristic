@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b4f9dc589cb92d4eaa2ccf5394be046
+guid: fdf6f3264aa723b409fb562826cc43f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6413375110068447387
-    second: Refugee #1 mouth open_0
+      213: 5583141051304231123
+    second: Untitled (3)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Refugee #1 mouth open_0
+      name: Untitled (3)_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 2
-        width: 269
-        height: 697
+        x: 273
+        y: 73
+        width: 783
+        height: 1342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b9826fedea2e00950800000000000000
-      internalID: 6413375110068447387
+      spriteID: 3d0c3e5943d4b7d40800000000000000
+      internalID: 5583141051304231123
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Refugee #1 mouth open_0: 6413375110068447387
+      Untitled (3)_0: 5583141051304231123
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

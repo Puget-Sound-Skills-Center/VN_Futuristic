@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 68e159d62912f6244ba6583793597e1c
+guid: 706bfacbd73ded54787d0a369f8d5497
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4740695473322465564
-    second: Refugee #1 mouth closed_0
+      213: -2017498689788537062
+    second: florian-pioche-florian-pioche-paysage-florian-pioche_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Refugee #1 mouth closed_0
+      name: florian-pioche-florian-pioche-paysage-florian-pioche_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 3
-        width: 269
-        height: 696
+        x: 0
+        y: 0
+        width: 1920
+        height: 1358
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e6ef44959aa53eb0800000000000000
-      internalID: -4740695473322465564
+      spriteID: a17965c71a76004e0800000000000000
+      internalID: -2017498689788537062
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Refugee #1 mouth closed_0: -4740695473322465564
+      florian-pioche-florian-pioche-paysage-florian-pioche_0: -2017498689788537062
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
