@@ -104,7 +104,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator TransferToCredits()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(7);
     }
 
     IEnumerator StopFade()

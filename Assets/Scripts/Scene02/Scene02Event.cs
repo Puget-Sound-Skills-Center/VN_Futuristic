@@ -198,42 +198,18 @@ public class Scene02Event : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
-        nextButton.SetActive(true);
-        eventPos = 2_5;
-        // Prepare and show simple two-option choices (legacy coroutine-based handling)
-        //yield return new WaitForSeconds(2);
-       // mainTextObject.SetActive(false);
-        //Choice1.SetActive(true);
-        //Choice2.SetActive(true);
-        //Choice1.GetComponentInChildren<TMPro.TMP_Text>().text = "Agitated";
-       // Choice2.GetComponentInChildren<TMPro.TMP_Text>().text = "Polite";
-
-        // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
-        // Do NOT block here; choice coroutines will set eventPos when finished.
-    }
-
-    IEnumerator EventTwoPointFive()
-    {
-        mainTextObject.SetActive(false);
         nextButton.SetActive(false);
-        Mother.SetActive(false);
-        MotherStunned.SetActive(true);
-        MigrationOfficer.SetActive(false);
-        MigrationOfficerHeadTilt.SetActive(true);
-        textBox.SetActive(true);
-        charName.GetComponent<TMPro.TMP_Text>().text = "";
-        textToSpeak = "";
-        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
-        currentTextLength = textToSpeak.Length;
-        TextCreator.runTextPrint = true;
-        yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(1);
-        yield return new WaitUntil(() => textLength == currentTextLength);
-        yield return new WaitForSeconds(0.5f);
+        eventPos = 3;
+        // Prepare and show simple two-option choices (legacy coroutine-based handling)
+        yield return new WaitForSeconds(2);
+        mainTextObject.SetActive(true);
         Choice1.SetActive(true);
         Choice2.SetActive(true);
         Choice1.GetComponentInChildren<TMPro.TMP_Text>().text = "Agitated";
         Choice2.GetComponentInChildren<TMPro.TMP_Text>().text = "Polite";
+
+        // Return and let the choice button callbacks start the appropriate IEnumerator (Choice1Seq / Choice2Seq).
+        // Do NOT block here; choice coroutines will set eventPos when finished.
     }
 
     // These methods are intended to be assigned to the UI Buttons for the choices.
@@ -397,7 +373,7 @@ public class Scene02Event : MonoBehaviour
         // Prepare and show simple two-option choices (legacy coroutine-based handling)
         yield return new WaitForSeconds(2);
         //nextButton.SetActive(true);
-        mainTextObject.SetActive(false);
+        mainTextObject.SetActive(true);
         ChoiceV1.SetActive(true);
         ChoiceV2.SetActive(true);
         ChoiceV1.GetComponentInChildren<TMPro.TMP_Text>().text = "Plead";
@@ -606,11 +582,6 @@ public class Scene02Event : MonoBehaviour
         if (eventPos == 2)
         {
             StartCoroutine(EventTwo());
-        }
-
-        if (eventPos == 2.5)
-        {
-            StartCoroutine(EventTwoPointFive());
         }
 
         if (eventPos == 3)
