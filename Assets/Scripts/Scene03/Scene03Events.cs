@@ -103,7 +103,7 @@ public class Scene03Events : MonoBehaviour
         charRefugee1MouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Mother";
-        textToSpeak = "Y-yeah… They did. I don't understand why or what's going on?";
+        textToSpeak = "Y-yeah… They did. I don't understand why or what's going on.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;

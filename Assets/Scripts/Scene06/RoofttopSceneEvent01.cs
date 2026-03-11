@@ -453,7 +453,6 @@ public class RooftopSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(2);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("BridgeScene02");
     }
 
     public void NextButton()

@@ -25,6 +25,10 @@ public class Scene01Events : MonoBehaviour
     void Update()
     {
         textLength = TextCreator.charCount;
+        if (Input.GetKeyDown(KeyCode.Space) && nextButton)
+        {
+            NextButton();
+        }
     }
 
     void Start()
