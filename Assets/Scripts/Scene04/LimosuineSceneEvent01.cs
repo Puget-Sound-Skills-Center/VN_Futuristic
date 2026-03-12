@@ -8,6 +8,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
 {
     public GameObject fadeScreenIn;
     public GameObject charDarlin;
+    public GameObject charDarlinMouthOpen;
     public GameObject CharThomasValentine;
     public GameObject CharThomasValentineOpenMouth;
     public GameObject textBox;
@@ -46,7 +47,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(2);
         fadeScreenIn.SetActive(true);
         yield return new WaitForSeconds(2);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         // this is where our text function will go in future tutorial
@@ -90,6 +92,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
@@ -111,6 +114,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -130,7 +134,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     IEnumerator EventTwelve()
     {
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -152,6 +157,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         // event 1
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
@@ -171,7 +177,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         // event 2
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -192,7 +199,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         // event 3
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -237,6 +245,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "They will have to resolve it whether they like it or not. When nothing affects nobles, nothing concerns them. That’s simply the human mindset.";
@@ -258,6 +267,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "We will discover that for ourselves when we get there. The council is known for leaving concerns that are... 'Out of their control'... to be silent. And as you can tell, nobles from the west district have already grown numb to the lack of communication.";
@@ -296,7 +306,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         // event 5
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -318,6 +329,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         // event 6
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
@@ -337,7 +349,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     IEnumerator EventSeven()
     {
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -357,7 +370,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     IEnumerator EventEight()
     {
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -400,6 +414,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
@@ -421,6 +436,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
@@ -441,6 +457,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
@@ -460,7 +477,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     IEnumerator EventTen()
     {
         nextButton.SetActive(false);
-        charDarlin.SetActive(true);
+        charDarlin.SetActive(false);
+        charDarlinMouthOpen.SetActive(true);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
@@ -481,6 +499,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
+        charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(false);
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);

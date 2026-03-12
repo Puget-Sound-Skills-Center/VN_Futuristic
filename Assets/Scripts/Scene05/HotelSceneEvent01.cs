@@ -837,6 +837,10 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         nextButton.SetActive(true);
         eventPos = 31;
+        yield return new WaitForSeconds(2);
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(7);
     }
 
     public void NextButton()

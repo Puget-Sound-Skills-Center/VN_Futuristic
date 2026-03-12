@@ -423,8 +423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -382.99, y: 437.07}
-  m_SizeDelta: {x: 638.32, y: 942.66}
+  m_AnchoredPosition: {x: -464.24475, y: 437.07}
+  m_SizeDelta: {x: 773.7479, y: 942.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158966989
 MonoBehaviour:
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 72aba28092633e94285906a84289d86a, type: 3}
+  m_Texture: {fileID: 2800000, guid: dc0a8ce9532b31b41a2e7c089efa8445, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1840,7 +1840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1088567096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2930,6 +2930,7 @@ RectTransform:
   - {fileID: 1198354251}
   - {fileID: 838286324}
   - {fileID: 158966987}
+  - {fileID: 1459339021}
   - {fileID: 1316354865}
   - {fileID: 264969190}
   - {fileID: 1084567892}
@@ -3118,6 +3119,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1459339020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459339021}
+  - component: {fileID: 1459339023}
+  - component: {fileID: 1459339022}
+  m_Layer: 5
+  m_Name: D'ArlinMouthOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1459339021
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459339020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378643807}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -445.26453, y: 426.39368}
+  m_SizeDelta: {x: 702.5722, y: 873.4617}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1459339022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459339020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 48ecc2d4e7d39094d99729c2ace84451, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1459339023
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459339020}
+  m_CullTransparentMesh: 1
 --- !u!1 &1529999540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +3607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreenIn: {fileID: 1088567095}
   charDarlin: {fileID: 158966986}
+  charDarlinMouthOpen: {fileID: 1459339020}
   CharThomasValentine: {fileID: 1316354864}
   CharThomasValentineOpenMouth: {fileID: 264969189}
   textBox: {fileID: 1117388364}
