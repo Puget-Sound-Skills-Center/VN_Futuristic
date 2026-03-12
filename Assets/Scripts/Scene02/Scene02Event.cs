@@ -34,8 +34,6 @@ public class Scene02Event : MonoBehaviour
     //these are for the randomized scene
     [SerializeField] GameObject parkDay;
     [SerializeField] GameObject parkNight;
-    [SerializeField] GameObject dayBGM;
-    [SerializeField] GameObject nightBGM;
     [SerializeField] int randomScene;
 
     // Animator for Mother bounce/walk animations (assign in Inspector or it will be auto-found)
@@ -59,17 +57,6 @@ public class Scene02Event : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("LoadState", 2);
-        randomScene = Random.Range(1, 4);
-        if (randomScene == 1)
-        {
-            parkDay.SetActive(true);
-            dayBGM.SetActive(true);
-        }
-        else
-        {
-            parkNight.SetActive(true);
-            nightBGM.SetActive(true);
-        }
         StartCoroutine(EventStarter());
     }
 

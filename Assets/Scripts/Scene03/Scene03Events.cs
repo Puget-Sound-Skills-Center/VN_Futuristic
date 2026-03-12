@@ -12,8 +12,7 @@ public class Scene03Events : MonoBehaviour
     public GameObject charRefugee1MouthOpen;
     public GameObject charRefugee2;
     public GameObject textBox;
-    [SerializeField] AudioSource girlSigh;
-    [SerializeField] AudioSource girlGasp;
+    [SerializeField] AudioSource Intercom;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
     [SerializeField] int textLength;
@@ -185,9 +184,10 @@ public class Scene03Events : MonoBehaviour
         charMother.SetActive(true);
         CharRefugee1.SetActive(true);
         charRefugee1MouthOpen.SetActive(false);
-        textBox.SetActive(false);
+        mainTextObject.SetActive(false);
+        Intercom.Play();
         yield return new WaitForSeconds(2);
-        textBox.SetActive(true);
+        mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Intercom";
         textToSpeak = "Attention, all refugees; unfortunately the system has been receiving some setbacks at the moment regarding the errors in everyone’s visas declining. At the moment, everyone must stay in their camps or return home until further notice.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;

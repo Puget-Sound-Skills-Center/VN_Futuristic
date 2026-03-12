@@ -9,6 +9,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     public GameObject fadeScreenIn;
     public GameObject charDarlin;
     public GameObject CharThomasValentine;
+    public GameObject CharThomasValentineOpenMouth;
     public GameObject textBox;
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLength;
@@ -47,6 +48,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(2);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'arlin";
@@ -88,7 +90,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "Appearance doesn’t dictate actions or words, but of course it’d be too much of asking you of all people to understand that statement.";
@@ -109,6 +112,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "...";
@@ -128,6 +132,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "Or not... Typical you.";
@@ -168,6 +173,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "Just a suggestion.";
@@ -188,6 +194,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "But… I did hear how the migration system’s been getting out of hand recently, how do you think the council is gonna tackle that?";
@@ -227,7 +234,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         charDarlin.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
@@ -247,7 +255,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         charDarlin.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
@@ -289,6 +298,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "Spoken like a true noble.";
@@ -308,7 +318,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         // event 6
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "This IS my limosuine, y'know...";
@@ -328,6 +339,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "Just sayin'...";
@@ -347,6 +359,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "But, that doesn’t answer the question. Council meetings like this continental never happen ever, the rumors are that the matters consist of mercenaries and the plummeting economy of both districts.";
@@ -387,7 +400,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "The Migration system has been a recurring issue for several months, I wouldn’t put it past them to try and brush it aside, but that is an issue I won’t allow to be silent.";
@@ -407,7 +421,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         mainTextObject.SetActive(true);
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "To be quite frank, they'll most likely gaslight the matter into spinning it as justifiable progression, possibly to soften the reputation of themselves and close ties, more specifically MPC.   ";
@@ -426,7 +441,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "The Migration system has been a recurring issue for several months, I wouldn’t put it past them to try and brush it aside, but that is an issue I won’t allow to be silent.";
@@ -446,6 +462,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
         CharThomasValentine.SetActive(true);
+        CharThomasValentineOpenMouth.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "D'Arlin";
         textToSpeak = "Yeah yeah, just try not to expose every single person there and their secrets. And just to be clear, my business practices are authentic and man made.";
@@ -464,7 +481,8 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charDarlin.SetActive(true);
-        CharThomasValentine.SetActive(true);
+        CharThomasValentine.SetActive(false);
+        CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
         textToSpeak = "I don't care about your business.";
