@@ -9,6 +9,7 @@ public class HotelSceneEvent01 : MonoBehaviour
 {
     public GameObject fadeScreenIn;
     public GameObject charKT;
+    public GameObject charKTWhistle;
     public GameObject charKT2;
     public GameObject charCoin;
     public GameObject charTobaccio;
@@ -118,7 +119,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
-        charKT.SetActive(true);
+        charKT.SetActive(false);
+        charKTWhistle.SetActive(true);
         charKT2.SetActive(false);
         charCoin.SetActive(true);
         // this is where our text function will go in future tutorial
@@ -144,6 +146,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
         charKT.SetActive(true);
+        charKTWhistle.SetActive(false);
         charKT2.SetActive(false);
         charCoin.SetActive(true);
         mainTextObject.SetActive(true);
@@ -168,8 +171,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
         charCoin.SetActive(true);
-        charKT.SetActive(true);
-        charKT2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "About 6,000 visas declined this morning alone. All from a system error apparently.";
@@ -195,7 +198,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
-        textToSpeak = "How much you wanna bet it was a hack by another merc?";
+        textToSpeak = "Damn... How much you wanna bet it was a hack by another merc?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -214,8 +217,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
-        charKT.SetActive(true);
-        charKT2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "I’d bet a 5. Only because there’s not really a whole lot you can do with a bunch of refugee’s visas and IDs, buying and selling immigrant data is useless, and doesn't hold much value for anything. I’d guess if it was a hack, this was just a slip up at best.";
@@ -260,8 +263,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
-        charKT.SetActive(true);
-        charKT2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "True. Most refugees coming from the east all have the same reason, the west market wants more workers, and the refugees from the east want sustainability and jobs.";
@@ -306,8 +309,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
-        charKT.SetActive(true);
-        charKT2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "It’s the least of their problems, it’s outlaw haven after all.";
@@ -615,8 +618,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
         yield return StartCoroutine(PlayAnimationAndWait(TobaccioSlideIn03, "SlideInTobaccio"));
@@ -639,8 +642,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "Just talking about the numbers of visa rejections.";
@@ -685,8 +688,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "Yeah, and that spells good business for mercs.";
@@ -731,8 +734,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "You think we should check out the council?";
@@ -754,8 +757,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Tobaccio";
         textToSpeak = "And hear them talk about what? Shit that has nothing to do with anything?";
@@ -777,8 +780,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "Well, I do know one place where we can watch the meeting without being seen.";
@@ -800,8 +803,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(false);
-        charKT2.SetActive(true);
+        charKT.SetActive(true);
+        charKT2.SetActive(false);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "And besides,  I think that’s a gamble worth taking, wanna bet on it?";
