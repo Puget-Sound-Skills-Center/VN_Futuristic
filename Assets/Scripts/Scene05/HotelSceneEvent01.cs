@@ -804,7 +804,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         charKT2.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
-        textToSpeak = "And besides, that’s a gamble I think is worth taking, wanna bet on it?";
+        textToSpeak = "And besides,  I think that’s a gamble worth taking, wanna bet on it?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;

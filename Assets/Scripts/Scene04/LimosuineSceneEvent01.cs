@@ -97,7 +97,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
         CharThomasValentineOpenMouth.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Thomas Valentine";
-        textToSpeak = "Appearance doesn’t dictate actions or words, but of course it’d be too much of asking you of all people to understand that statement.";
+        textToSpeak = "Appearance doesn’t dictate actions or words, but of course that’d be too much to ask you of all people to understand that statement.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLength = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -370,7 +370,7 @@ public class LimosuineSceneEvent01 : MonoBehaviour
     IEnumerator EventEight()
     {
         nextButton.SetActive(false);
-        charDarlin.SetActive(false);
+        charDarlin.SetActive(true);
         charDarlinMouthOpen.SetActive(false);
         CharThomasValentine.SetActive(true);
         CharThomasValentineOpenMouth.SetActive(false);
