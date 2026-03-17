@@ -12,6 +12,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     public GameObject charKTWhistle;
     public GameObject charKT2;
     public GameObject charCoin;
+    public GameObject charCoinHeadDown;
+    public GameObject charCoinMouthOpen;
+    public GameObject charCoinSmirk;
     public GameObject charTobaccio;
     public GameObject charTobaccio2;
     public GameObject charFrontDesk;
@@ -122,7 +125,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         charKT.SetActive(false);
         charKTWhistle.SetActive(true);
         charKT2.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinHeadDown.SetActive(true);
         // this is where our text function will go in future tutorial
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
@@ -148,7 +152,9 @@ public class HotelSceneEvent01 : MonoBehaviour
         charKT.SetActive(true);
         charKTWhistle.SetActive(false);
         charKT2.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(true);
+        charCoinHeadDown.SetActive(false);
         mainTextObject.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "Coin";
         textToSpeak = "Really? How many got screwed over?";
@@ -171,6 +177,7 @@ public class HotelSceneEvent01 : MonoBehaviour
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(true);
         mainTextObject.SetActive(true);
@@ -190,7 +197,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventThree()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinSmirk.SetActive(true);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -214,6 +222,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -236,7 +245,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventFive()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinSmirk.SetActive(true);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -260,6 +270,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -283,6 +294,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(true);
+        charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -306,6 +319,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinSmirk.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
