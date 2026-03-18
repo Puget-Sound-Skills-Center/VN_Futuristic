@@ -16,6 +16,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     public GameObject charCoinMouthOpen;
     public GameObject charCoinSmirk;
     public GameObject charTobaccio;
+    public GameObject charTobaccioMouthOpen;
     public GameObject charTobaccio2;
     public GameObject charFrontDesk;
     public GameObject textBox;
@@ -293,7 +294,7 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventSeven()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
         charCoinMouthOpen.SetActive(true);
         charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
@@ -345,6 +346,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -373,6 +376,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(false);
         charFrontDesk.SetActive(false);
@@ -399,6 +404,8 @@ public class HotelSceneEvent01 : MonoBehaviour
         yield return new WaitForSeconds(1);
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
         charTobaccio.SetActive(true);
         charTobaccio2.SetActive(false);
@@ -423,8 +430,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -446,8 +456,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -468,8 +481,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -492,8 +508,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -515,8 +534,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -538,8 +560,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -561,8 +586,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -584,8 +612,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(true);
-        charTobaccio.SetActive(true);
+        charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(true);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(false);
@@ -607,8 +638,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(false);
         charTobaccio2.SetActive(false);
         charKT.SetActive(false);
         charKT2.SetActive(true);
@@ -630,8 +664,11 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
+        charTobaccioMouthOpen.SetActive(false);
         charTobaccio2.SetActive(true);
         charKT.SetActive(true);
         charKT2.SetActive(false);
@@ -653,7 +690,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventTwentyTwo()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(true);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -677,6 +716,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -699,7 +740,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventTwentyFour()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(true);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -723,6 +766,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -745,7 +790,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventTwentySix()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(true);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -769,6 +816,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -792,11 +841,13 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
-        charKT.SetActive(true);
-        charKT2.SetActive(false);
+        charKT.SetActive(false);
+        charKT2.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "K.T";
         textToSpeak = "Well, I do know one place where we can watch the meeting without being seen.";
@@ -814,7 +865,9 @@ public class HotelSceneEvent01 : MonoBehaviour
     IEnumerator EventTwentyNine()
     {
         nextButton.SetActive(false);
-        charCoin.SetActive(true);
+        charCoin.SetActive(false);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(true);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
@@ -838,6 +891,8 @@ public class HotelSceneEvent01 : MonoBehaviour
     {
         nextButton.SetActive(false);
         charCoin.SetActive(true);
+        charCoinMouthOpen.SetActive(false);
+        charCoinSmirk.SetActive(false);
         charFrontDesk.SetActive(false);
         charTobaccio.SetActive(false);
         charTobaccio2.SetActive(true);
